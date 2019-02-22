@@ -48,4 +48,11 @@ class Shifts
     @offsets[:c] = four[2].to_i
     @offsets[:d] = four[3].to_i
   end
+
+  def create_shifts
+    @shifts[:a] = @keys[:a] + @offsets[:a]
+    @shifts[:b] = @keys[:b] + @offsets[:b]
+    @shifts[:c] = @keys[:c] + @offsets[:c]
+    @shifts[:d] = @keys[:d] + @offsets[:d]
+  end
 end

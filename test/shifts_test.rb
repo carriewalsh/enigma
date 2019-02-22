@@ -79,6 +79,7 @@ class ShiftsTest < MiniTest::Test
     square = @shifts.square_date("032489")
     four = @shifts.last_four(square)
     @shifts.create_offsets(four)
+    @shifts.create_shifts
     expected = {a: 17,
                 b: 24,
                 c: 36,
