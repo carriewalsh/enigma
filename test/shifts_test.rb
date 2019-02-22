@@ -34,6 +34,6 @@ class ShiftsTest < MiniTest::Test
   def test_random_five_digit_number_generated
     assert_equal String, @shifts.random_key.class
     assert_equal 5, @shifts.random_key.to_s.length
-    assert_equal true, @shifts.random_key.between?(0,99999)
+    assert_equal true, @shifts.random_key.to_i.between?(0,99999)
   end
 end
