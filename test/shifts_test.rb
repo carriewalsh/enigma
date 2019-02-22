@@ -64,7 +64,9 @@ class ShiftsTest < MiniTest::Test
   end
 
   def test_offsets_made_and_stored_in_hash
-    @shifts.create_offsets("032489")
+    square = @shifts.square_date("032489")
+    four = @shifts.last_four(square)
+    @shifts.create_offsets(four)
     expected = {a: 5,
                 b: 1,
                 c: 2,
