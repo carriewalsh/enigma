@@ -10,7 +10,15 @@ class ShiftsTest < MiniTest::Test
     assert_instance_of Shifts, @shifts
   end
 
-  # def test_shifts_beings_with_empty_hash
-  #   assert_equal ({}), @shifts.shifts
-  # end
+  def test_shifts_begins_with_empty_keys_hash
+    assert_equal ({}), @shifts.keys
+  end
+
+  def test_shifts_begins_with_empty_offsets_hash
+    assert_equal ({}), @shifts.offsets
+  end
+  
+  def test_shifts_begins_with_empty_shifts_hash
+    assert_equal ({}), @shifts.shifts
+  end
 end
