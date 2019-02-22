@@ -1,2 +1,2 @@
-class Keys
+module Keys
 end
