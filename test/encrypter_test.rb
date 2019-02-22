@@ -20,4 +20,10 @@ class EncrypterTest < MiniTest::Test
   def test_encrypter_has_offset
     assert_equal "032489", @encrypter.offset
   end
+
+  def test_encrypter_can_initialize_only_with_message
+    encrypter = Encrypter.new(message: "butts")
+    assert_equal nil, encrypter.key
+    assert_equal nil, encrypter.offset
+  end
 end
