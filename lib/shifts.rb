@@ -47,6 +47,5 @@ class Shifts
     @offsets[:b] = four[1].to_i
     @offsets[:c] = four[2].to_i
     @offsets[:d] = four[3].to_i
-
   end
 end
