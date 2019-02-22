@@ -6,5 +6,5 @@ require "minitest/pride"
 
 require "pry"
 
-require "./lib/keys"
 require "./lib/shifts"
+require "./lib/encrypter"
