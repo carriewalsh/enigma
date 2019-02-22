@@ -48,4 +48,8 @@ class ShiftsTest < MiniTest::Test
                 d: 45}
     assert_equal expected, @shifts.keys
   end
+
+  def test_makes_offset_of_todays_date
+    assert_equal "220219", @shifts.today_offset
+  end
 end

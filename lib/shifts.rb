@@ -27,6 +27,5 @@ class Shifts
     @keys[:b] = string[1,2].to_i
     @keys[:c] = string[2,2].to_i
     @keys[:d] = string[3,2].to_i
-
   end
 end
