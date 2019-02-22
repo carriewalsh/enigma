@@ -23,9 +23,8 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_enigma_can_initialize_only_with_message
-    skip
     enigma = Enigma.new(message: "butts")
-    assert_equal nil, enigma.key
-    assert_equal nil, enigma.offset
+    assert_nil enigma.key
+    assert_nil enigma.offset
   end
 end
