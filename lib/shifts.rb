@@ -28,4 +28,8 @@ class Shifts
     @keys[:c] = string[2,2].to_i
     @keys[:d] = string[3,2].to_i
   end
+
+  def today_offset
+    Time.new.strftime("%d%m%y")
+  end
 end
