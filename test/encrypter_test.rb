@@ -22,6 +22,7 @@ class EncrypterTest < MiniTest::Test
   end
 
   def test_encrypter_can_initialize_only_with_message
+    skip
     encrypter = Encrypter.new(message: "butts")
     assert_equal nil, encrypter.key
     assert_equal nil, encrypter.offset
