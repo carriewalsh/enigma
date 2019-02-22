@@ -7,7 +7,6 @@ message = reader.read
 reader.close
 
 writer = File.open(ARGV[1],"w")
-
 encrypted = message.encrypt
 #should encrypt be here or in another module?
 
