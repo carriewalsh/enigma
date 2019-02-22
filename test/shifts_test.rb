@@ -53,4 +53,22 @@ class ShiftsTest < MiniTest::Test
     assert_equal "220219", @shifts.today_offset
     # assert_equal Time.new.strftime("%d%m%y"), @shifts.today_offset
   end
+
+  def test_squares_date
+    assert_equal "1055535121", @shifts.square_date("032489")
+  end
+
+  def test_gets_last_four_for_offset
+    square = @shifts.square_date("032489")
+    assert_equal "5121", @shifts.last_four(square)
+  end
+
+  def test_offsets_made_and_stored_in_hash
+    @shifts.create_offsets("032489")
+    expected = {a: 5,
+                b: 1,
+                c: 2,
+                d: 1}
+    assert_equal expected, @shifts.offsets
+  end
 end
