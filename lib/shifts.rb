@@ -4,9 +4,11 @@ require "./lib/offsets"
 class Shifts
   include Keys
   include Offsets
+
   attr_reader :keys,
               :offsets,
               :shifts
+              
   def initialize
     @keys = {a: nil,
             b: nil,
@@ -34,5 +36,4 @@ class Shifts
     offset_integrated(offset)
     create_shifts
   end
-
 end
