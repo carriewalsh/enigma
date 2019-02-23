@@ -1,52 +1,52 @@
 module LetterShift
-  def shift_a
+  def shift_a(message)
     count = 0
-    char_index.each_with_index do |char,index|
+    char_index(message).each_with_index do |char,index|
       if index == count
-        @message[index] = @a_array[char]
+        message[index] = @a_array[char]
         count += 4
       end
     end
-    @message
+    message
   end
 
-  def shift_b
+  def shift_b(message)
     count = 1
-    char_index.each_with_index do |char,index|
+    char_index(message).each_with_index do |char,index|
       if index == count
-        @message[index] = @b_array[char]
+        message[index] = @b_array[char]
         count += 4
       end
     end
-    @message
+    message
   end
 
-  def shift_c
+  def shift_c(message)
     count = 2
-    char_index.each_with_index do |char,index|
+    char_index(message).each_with_index do |char,index|
       if index == count
-        @message[index] = @c_array[char]
+        message[index] = @c_array[char]
         count += 4
       end
     end
-    @message
+    message
   end
 
-  def shift_d
+  def shift_d(message)
     count = 3
-    char_index.each_with_index do |char,index|
+    char_index(message).each_with_index do |char,index|
       if index == count
-        @message[index] = @d_array[char]
+        message[index] = @d_array[char]
         count += 4
       end
     end
-    @message
+    message
   end
 
-  def shift_all
-    shift_a
-    shift_b
-    shift_c
-    shift_d
+  def shift_all(message)
+    shift_a(message)
+    shift_b(message)
+    shift_c(message)
+    shift_d(message)
   end
 end

@@ -40,7 +40,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_message_chars_indices_in_array
-    assert_equal [3,20,2,10,18], @enigma.char_index #this requires an attr_writer...
+    assert_equal [3,20,2,10,18], @enigma.char_index("ducks") #this requires an attr_writer...
   end
 
   def test_encrypt_hash_method_returns_hash
