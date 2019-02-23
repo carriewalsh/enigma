@@ -128,6 +128,13 @@ class EnigmaTest < MiniTest::Test
     assert_equal expected, enigma.message
   end
 
+  def test_encrypt_hash_method_returns_hash
+    expected = {encryption: nil,
+                key: nil,
+                date: nil}
+    assert_equal expected, @enigma.encrypt_hash
+  end
+
   def test_encrypt_method_creates_encrypted_message
     @enigma.encrypt("ducks", "12345", "032489")
     expected = {encryption: "urlci",
