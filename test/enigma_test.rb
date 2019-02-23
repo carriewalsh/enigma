@@ -39,15 +39,21 @@ class EnigmaTest < MiniTest::Test
     square = @shifts.square_date("032489")
     four = @shifts.last_four(square)
     @shifts.create_offsets(four)
+    @shifts.create_shifts
     expected = {a: 17,
                 b: 24,
                 c: 36,
                 d: 46}
-    @enigma.add_shifts(@shifts.create_shifts)
+    @enigma.add_shifts(@shifts.shifts)
     assert_equal expected, @enigma.shifts
   end
 
   def test_shifts_creates_shifted_arrays
+    @shifts.create_keys(12345)
+    square = @shifts.square_date("032489")
+    four = @shifts.last_four(square)
+    @shifts.create_offsets(four)
+    @shifts.create_shifts
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
     expected_a = []
     expected_b = []

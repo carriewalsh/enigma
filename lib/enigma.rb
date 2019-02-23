@@ -4,6 +4,7 @@ class Enigma
   attr_reader :message,
               :key,
               :offset,
+              :shifts,
               :alphabet,
               :a_array,
               :b_array,
@@ -13,11 +14,16 @@ class Enigma
     @message = message
     @key = key
     @offset = offset
+    @shifts = nil
     @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     @a_array = []
     @b_array = []
     @c_array = []
     @d_array = []
+  end
+
+  def add_shifts(shifts)
+    @shifts = shifts
   end
 
   def create_shifted_arrays(key,offset)
