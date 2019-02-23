@@ -70,6 +70,10 @@ class EnigmaTest < MiniTest::Test
     assert_equal ["d","u","c","k","s"], @enigma.message_chars
   end
 
+  def test_message_chars_indices_in_array
+    assert_equal [3,20,2,10,18], @enigma.char_index
+  end
+
   def test_a_chars_are_rotated
     assert_equal ["u","u","c","k","i"], @enigma.shift_a
   end

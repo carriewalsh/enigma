@@ -42,5 +42,14 @@ class Enigma
     @message.chars
   end
 
+  def char_index
+    message.chars.map {|char| @alphabet.index(char)}
+  end
+
+  def shift_a
+    array = message_chars
+
+  end
+
 
 end
