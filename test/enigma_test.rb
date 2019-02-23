@@ -13,34 +13,14 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_enigma_exists
-    skip
     assert_instance_of Enigma, @enigma
   end
 
-  def test_enigma_has_message
-    skip
-    assert_equal "ducks", @enigma.message
-  end
-
-  def test_enigma_has_key
-    skip
-    assert_equal "12345", @enigma.key
-  end
-
-  def test_enigma_has_offset
-    skip
-    assert_equal "032489", @enigma.offset
-  end
-
-  def test_enigma_can_initialize_only_with_message
-    skip
-    enigma = Enigma.new(message: "ducks")
-    assert_nil enigma.key
-    assert_nil enigma.offset
+  def test_engima_initializes_with_shifts_object
+    assert_instance_of Shifts, @enigma.shifts
   end
 
   def test_enigma_defaults_with_normal_alpha_array
-    skip
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     assert_equal expected, @enigma.alphabet
   end
