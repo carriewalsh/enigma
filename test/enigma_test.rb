@@ -3,7 +3,7 @@ require "./test/test_helper"
 class EnigmaTest < MiniTest::Test
 
   def setup
-    @enigma = Enigma.new(message: "butts", key: "12345", offset: "032489")
+    @enigma = Enigma.new(message: "ducks", key: "12345", offset: "032489")
     @shifts = Shifts.new
   end
 
@@ -12,7 +12,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_enigma_has_message
-    assert_equal "butts", @enigma.message
+    assert_equal "ducks", @enigma.message
   end
 
   def test_enigma_has_key
@@ -24,7 +24,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_enigma_can_initialize_only_with_message
-    enigma = Enigma.new(message: "butts")
+    enigma = Enigma.new(message: "ducks")
     assert_nil enigma.key
     assert_nil enigma.offset
   end
@@ -64,5 +64,9 @@ class EnigmaTest < MiniTest::Test
     assert_equal expected_b, @enigma.b_array
     assert_equal expected_c, @enigma.c_array
     assert_equal expected_d, @enigma.d_array
+  end
+
+  def test_message_turned_into_array
+    assert_equal ["d","u","c","k","s"], @enigma.message_chars
   end
 end

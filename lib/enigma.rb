@@ -27,18 +27,15 @@ class Enigma
   end
 
   def create_shifted_arrays(key,offset)
-    @a_array = @alphabet.rotate(@shifts[:a])
-    @b_array = @alphabet.rotate(@shifts[:b])
-    @c_array = @alphabet.rotate(@shifts[:c])
-    @d_array = @alphabet.rotate(@shifts[:d])
-
-
-
-    # if @key == nil
-    # end
+    if @key != nil && @offset != nil
+      @a_array = @alphabet.rotate(@shifts[:a])
+      @b_array = @alphabet.rotate(@shifts[:b])
+      @c_array = @alphabet.rotate(@shifts[:c])
+      @d_array = @alphabet.rotate(@shifts[:d])
+    end
+     #could use a while loop here
     # if @offset = nil
     # end
-
   end
 
 
