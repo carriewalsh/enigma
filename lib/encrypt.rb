@@ -17,7 +17,7 @@ message = reader.read
 reader.close
 
 writer = File.open(ARGV[1],"w")
-encrypted = enigma.encrypt(message,key,offset)
+encrypted = enigma.encrypt(message.rstrip,key,offset)
 #should encrypt be here or in another module?
 
 writer.write(encrypted)
