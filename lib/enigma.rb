@@ -89,4 +89,11 @@ class Enigma
     end
     @message
   end
+
+  def shift_all
+    shift_a
+    shift_b
+    shift_c
+    shift_d
+  end
 end
