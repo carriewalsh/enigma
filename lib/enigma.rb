@@ -3,6 +3,7 @@ require "./lib/letter_shift"
 
 class Enigma
   include LetterShift
+  
   attr_reader :message,
               :key,
               :offset,
@@ -12,7 +13,9 @@ class Enigma
               :b_array,
               :c_array,
               :d_array
+
   attr_writer :message #only for test...
+
   def initialize
     @message = nil
     @shifts = Shifts.new
