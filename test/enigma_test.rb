@@ -4,11 +4,9 @@ class EnigmaTest < MiniTest::Test
 
   def setup
     @enigma = Enigma.new
-    # @shifts = Shifts.new
     # @shifts.create_keys(@enigma.key)
     # @shifts.offset_integrated(@enigma.offset)
     # @shifts.create_shifts
-    # @enigma.add_shifts(@shifts.shifts)
     # @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
   end
 
@@ -25,27 +23,11 @@ class EnigmaTest < MiniTest::Test
     assert_equal expected, @enigma.alphabet
   end
 
-  def test_shifts_can_be_added_to_enigma
-    skip
-    enigma = Enigma.new(message: "ducks")
-    shifts = Shifts.new
-    shifts.create_keys(12345)
-    square = shifts.square_date("032489")
-    four = shifts.last_four(square)
-    shifts.create_offsets(four)
-    shifts.create_shifts
-    expected = {a: 17,
-                b: 24,
-                c: 36,
-                d: 46}
-    enigma.add_shifts(shifts.shifts)
-    assert_equal expected, enigma.shifts
-  end
-
   def test_shifts_creates_shifted_arrays
-    skip
-    @enigma.add_shifts(@shifts.shifts)
-    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
+    @enigma.shifts.create_keys(12345)
+    @enigma.shifts.offset_integrated("032489")
+    @enigma.shifts.create_shifts
+    @enigma.create_shifted_arrays(12345,"032489")
     expected_a = ["r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q"]
     expected_b = ["y", "z", " ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
     expected_c = ["j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "a", "b", "c", "d", "e", "f", "g", "h", "i"]

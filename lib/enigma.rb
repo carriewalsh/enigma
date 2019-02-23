@@ -20,15 +20,12 @@ class Enigma
     @d_array = []
   end
 
-  def add_shifts(shifts)
-    @shifts = shifts
-  end
-
   def create_shifted_arrays(key,offset)
     if key != nil && offset != nil
+      # binding.pry
+      @a_array = @alphabet.rotate(@shifts.shifts[:a])
       @b_array = @alphabet.rotate(@shifts.shifts[:b])
       @c_array = @alphabet.rotate(@shifts.shifts[:c])
-      @a_array = @alphabet.rotate(@shifts.shifts[:a])
       @d_array = @alphabet.rotate(@shifts.shifts[:d])
     end
      #could use a while loop here
@@ -103,7 +100,6 @@ class Enigma
 
   def encrypt(message,key,offset)
     @message = message
-    add_shifts(Shifts.new)
     @shifts.create_hashes(key,offset)
     create_shifted_arrays(key,offset)
     shift_all
