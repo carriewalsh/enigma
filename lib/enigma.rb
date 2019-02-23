@@ -106,9 +106,7 @@ class Enigma
   def encrypt(message,key,offset)
     @message = message
     add_shifts(Shifts.new)
-    @shifts.create_keys(key)
-    @shifts.offset_integrated(offset)
-    @shifts.create_shifts
+    @shifts.create_hashes(key,offset)
     create_shifted_arrays(key,offset)
     shift_all
     encrypt_hash(@message,key,offset)
