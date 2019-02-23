@@ -54,11 +54,12 @@ class EnigmaTest < MiniTest::Test
     four = @shifts.last_four(square)
     @shifts.create_offsets(four)
     @shifts.create_shifts
+    @enigma.add_shifts(@shifts.shifts)
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
-    expected_a = []
-    expected_b = []
-    expected_c = []
-    expected_d = []
+    expected_a = ["r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q"]
+    expected_b = ["y", "z", " ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
+    expected_c = ["j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "a", "b", "c", "d", "e", "f", "g", "h", "i"]
+    expected_d = ["t", "u", "v", "w", "x", "y", "z", " ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s"]
     assert_equal expected_a, @enigma.a_array
     assert_equal expected_b, @enigma.b_array
     assert_equal expected_c, @enigma.c_array
