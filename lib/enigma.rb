@@ -98,7 +98,12 @@ class Enigma
   end
 
   def encrypt(message,key,offset)
-    
+    @message = message
+    @shifts.create_keys(key)
+    @shifts.offset_integrated(offset)
+    @shifts.create_shifts
+    @enigma.add_shifts()
+    @enigma.create_shifted_arrays(key,offset)
 
   end
 

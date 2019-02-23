@@ -113,8 +113,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_encrypt_method_creates_encrypted_message
-    skip
-  @enigma.encrypt(@enigma.message,@enigma.key,@engima.offset)
+    @enigma.encrypt(@enigma.message, @enigma.key, @engima.offset)
     assert_equal "urlci", @enigma.message
   end
 end
