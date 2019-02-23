@@ -34,7 +34,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_shifts_creates_shifted_arrays
-
+    @enigma.create_shifted_arrays(@key,@offset)
     expected_a =
     expected_b =
     expected_c =
