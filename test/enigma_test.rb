@@ -117,4 +117,16 @@ class EnigmaTest < MiniTest::Test
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
     assert_equal "duccs", @enigma.shift_d
   end
+
+  def test_all_chars_are_rotated
+    @shifts.create_keys(12345)
+    square = @shifts.square_date("032489")
+    four = @shifts.last_four(square)
+    @shifts.create_offsets(four)
+    @shifts.create_shifts
+    @enigma.add_shifts(@shifts.shifts)
+    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
+    @enigma.shift_all
+    assert_equal "urlci", @enigma.message
+  end
 end
