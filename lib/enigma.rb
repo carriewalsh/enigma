@@ -96,4 +96,11 @@ class Enigma
     shift_c
     shift_d
   end
+
+  def encrypt(message,key,offset)
+    
+
+  end
+
+
 end
