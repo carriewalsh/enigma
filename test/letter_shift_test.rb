@@ -36,14 +36,14 @@ class LetterShiftTest < MiniTest::Test
   end
 
   def test_b_encrypted_letters_rotated_back
-    assert_equal "ducks", @enigma.shift_b("drcks")
+    assert_equal "ducks", @enigma.shift_back_b("drcks")
   end
 
   def test_c_encrypted_letters_rotated_back
-    assert_equal "ducks", @enigma.shift_c("dulks")
+    assert_equal "ducks", @enigma.shift_back_c("dulks")
   end
 
   def test_d_encrypted_letters_rotated_back
-    assert_equal "ducks", @enigma.shift_d("duccs")
+    assert_equal "ducks", @enigma.shift_back_d("duccs")
   end
 end
