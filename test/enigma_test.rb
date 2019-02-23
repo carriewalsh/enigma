@@ -56,10 +56,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_shifts_creates_shifted_arrays
-    @shifts.create_keys(12345)
-    square = @shifts.square_date("032489")
-    four = @shifts.last_four(square)
-    @shifts.create_offsets(four)
     @shifts.create_shifts
     @enigma.add_shifts(@shifts.shifts)
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
@@ -82,10 +78,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_a_chars_are_rotated
-    @shifts.create_keys(12345)
-    square = @shifts.square_date("032489")
-    four = @shifts.last_four(square)
-    @shifts.create_offsets(four)
     @shifts.create_shifts
     @enigma.add_shifts(@shifts.shifts)
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
@@ -93,10 +85,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_b_chars_are_rotated
-    @shifts.create_keys(12345)
-    square = @shifts.square_date("032489")
-    four = @shifts.last_four(square)
-    @shifts.create_offsets(four)
     @shifts.create_shifts
     @enigma.add_shifts(@shifts.shifts)
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
@@ -104,10 +92,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_c_chars_are_rotated
-    @shifts.create_keys(12345)
-    square = @shifts.square_date("032489")
-    four = @shifts.last_four(square)
-    @shifts.create_offsets(four)
     @shifts.create_shifts
     @enigma.add_shifts(@shifts.shifts)
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
@@ -115,10 +99,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_d_chars_are_rotated
-    @shifts.create_keys(12345)
-    square = @shifts.square_date("032489")
-    four = @shifts.last_four(square)
-    @shifts.create_offsets(four)
     @shifts.create_shifts
     @enigma.add_shifts(@shifts.shifts)
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
@@ -126,10 +106,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_all_chars_are_rotated
-    @shifts.create_keys(12345)
-    square = @shifts.square_date("032489")
-    four = @shifts.last_four(square)
-    @shifts.create_offsets(four)
     @shifts.create_shifts
     @enigma.add_shifts(@shifts.shifts)
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
