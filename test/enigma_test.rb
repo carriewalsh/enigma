@@ -129,10 +129,10 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_encrypt_hash_method_returns_hash
-    expected = {encryption: nil,
-                key: nil,
-                date: nil}
-    assert_equal expected, @enigma.encrypt_hash
+    expected = {encryption: "message",
+                key: "12345",
+                date: "032489"}
+    assert_equal expected, @enigma.encrypt_hash("message","12345","032489")
   end
 
   def test_encrypt_method_creates_encrypted_message

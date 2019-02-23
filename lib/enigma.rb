@@ -97,6 +97,12 @@ class Enigma
     shift_d
   end
 
+  def encrypt_hash(encryption,key,offset)
+    {encryption: encryption,
+    key: key,
+    date: offset}
+  end
+
   def encrypt(message,key,offset)
     @message = message
     add_shifts(Shifts.new)
