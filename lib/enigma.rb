@@ -38,18 +38,33 @@ class Enigma
     # end
   end
 
-  def message_chars
+  def message_chars #is this method needed if all I want it for is char_index?
     @message.chars
   end
 
   def char_index
-    message.chars.map {|char| @alphabet.index(char)}
+    @message.chars.map {|char| @alphabet.index(char)}
   end
 
   def shift_a
-    array = message_chars
-
+    count = 0
+    char_index.each_with_index do |char,index|
+      if index == count
+        @message[index] = @a_array[char]
+        count += 4
+      end
+    end
+    @message
   end
 
-
+  def shift_b
+    count = 1
+    char_index.each_with_index do |char,index|
+      if index == count
+        @message[index] = @b_array[char]
+        count += 4
+      end
+    end
+    @message
+  end
 end

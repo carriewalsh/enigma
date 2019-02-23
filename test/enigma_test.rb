@@ -75,18 +75,46 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_a_chars_are_rotated
-    assert_equal ["u","u","c","k","i"], @enigma.shift_a
+    @shifts.create_keys(12345)
+    square = @shifts.square_date("032489")
+    four = @shifts.last_four(square)
+    @shifts.create_offsets(four)
+    @shifts.create_shifts
+    @enigma.add_shifts(@shifts.shifts)
+    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
+    assert_equal "uucki", @enigma.shift_a
   end
 
   def test_b_chars_are_rotated
-    assert_equal ["d","s","c","k","s"], @enigma.shift_b
+    @shifts.create_keys(12345)
+    square = @shifts.square_date("032489")
+    four = @shifts.last_four(square)
+    @shifts.create_offsets(four)
+    @shifts.create_shifts
+    @enigma.add_shifts(@shifts.shifts)
+    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
+    assert_equal "drcks", @enigma.shift_b
   end
 
   def test_c_chars_are_rotated
-    assert_equal ["d","u","l","k","s"], @enigma.shift_c
+    @shifts.create_keys(12345)
+    square = @shifts.square_date("032489")
+    four = @shifts.last_four(square)
+    @shifts.create_offsets(four)
+    @shifts.create_shifts
+    @enigma.add_shifts(@shifts.shifts)
+    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
+    assert_equal "dulks", @enigma.shift_c
   end
 
   def test_d_chars_are_rotated
-    assert_equal ["d","u","c","c","s"], @enigma.shift_d
+    @shifts.create_keys(12345)
+    square = @shifts.square_date("032489")
+    four = @shifts.last_four(square)
+    @shifts.create_offsets(four)
+    @shifts.create_shifts
+    @enigma.add_shifts(@shifts.shifts)
+    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
+    assert_equal "duccs", @enigma.shift_d
   end
 end
