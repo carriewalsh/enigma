@@ -4,10 +4,7 @@ class EnigmaTest < MiniTest::Test
 
   def setup
     @enigma = Enigma.new
-    # @shifts.create_keys(@enigma.key)
-    # @shifts.offset_integrated(@enigma.offset)
-    # @shifts.create_shifts
-    # @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
+
   end
 
   def test_enigma_exists
@@ -36,11 +33,6 @@ class EnigmaTest < MiniTest::Test
     assert_equal expected_b, @enigma.b_array
     assert_equal expected_c, @enigma.c_array
     assert_equal expected_d, @enigma.d_array
-  end
-
-  def test_message_turned_into_array
-    skip
-    assert_equal ["d","u","c","k","s"], @enigma.message_chars
   end
 
   def test_message_chars_indices_in_array

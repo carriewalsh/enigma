@@ -33,10 +33,6 @@ class Enigma
     # end
   end
 
-  def message_chars #is this method needed if all I want it for is char_index?
-    @message.chars
-  end
-
   def char_index
     @message.chars.map {|char| @alphabet.index(char)}
   end
