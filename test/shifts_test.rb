@@ -48,19 +48,21 @@ class ShiftsTest < MiniTest::Test
   end
 
   def test_shifts_integrated_method_creates_all_hashes
-    expected = {@keys=>{:a=>12,
+    expected_keys = {:a=>12,
                 :b=>23,
                 :c=>34,
-                :d=>45},
-                @offsets=>{:a=>5,
+                :d=>45}
+    expected_offsets = {:a=>5,
                 :b=>1,
                 :c=>2,
-                :d=>1},
-                @shifts=>{:a=>17,
+                :d=>1}
+    expected_shifts = {:a=>17,
                 :b=>24,
                 :c=>36,
-                :d=>46}}
-
-    assert_equal expected, @shifts.create_hashes
+                :d=>46}
+    @shifts.create_hashes(12345,"032489")
+    assert_equal expected_keys, @shifts.keys
+    assert_equal expected_offsets, @shifts.offsets
+    assert_equal expected_shifts, @shifts.shifts
   end
 end
