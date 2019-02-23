@@ -111,7 +111,7 @@ class Enigma
     @shifts.create_shifts
     create_shifted_arrays(key,offset)
     shift_all
-    @message
+    encrypt_hash(@message,key,offset)
   end
 
 
