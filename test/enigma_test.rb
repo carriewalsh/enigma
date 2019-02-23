@@ -69,4 +69,20 @@ class EnigmaTest < MiniTest::Test
   def test_message_turned_into_array
     assert_equal ["d","u","c","k","s"], @enigma.message_chars
   end
+
+  def test_a_chars_are_rotated
+    assert_equal ["u","u","c","k","i"], @enigma.shift_a
+  end
+
+  def test_b_chars_are_rotated
+    assert_equal ["d","s","c","k","s"], @enigma.shift_b
+  end
+
+  def test_c_chars_are_rotated
+    assert_equal ["d","u","l","k","s"], @enigma.shift_c
+  end
+
+  def test_d_chars_are_rotated
+    assert_equal ["d","u","c","c","s"], @enigma.shift_d
+  end
 end

@@ -7,7 +7,7 @@ class OffsetsTest < MiniTest::Test
   end
 
   def test_makes_offset_of_todays_date
-    assert_equal "220219", @shifts.today_offset
+    assert_equal "230219", @shifts.today_offset
     # assert_equal Time.new.strftime("%d%m%y"), @shifts.today_offset
   end
 
