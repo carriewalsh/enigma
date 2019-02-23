@@ -32,4 +32,16 @@ class EnigmaTest < MiniTest::Test
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     assert_equal expected, @enigma.alphabet
   end
+
+  def test_shifts_creates_shifted_arrays
+
+    expected_a =
+    expected_b =
+    expected_c =
+    expected_d =
+    assert_equal expected_a, @enigma.a_array
+    assert_equal expected_b, @enigma.b_array
+    assert_equal expected_c, @enigma.c_array
+    assert_equal expected_d, @enigma.d_array
+  end
 end
