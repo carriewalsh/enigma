@@ -10,11 +10,11 @@ class Enigma
               :b_array,
               :c_array,
               :d_array
-  def initialize(message: , key: nil, offset: nil)
-    @message = message
-    @key = key
-    @offset = offset
-    @shifts = nil
+  def initialize
+    @message = nil
+    @key = nil
+    @offset = nil
+    @shifts = Shifts.new
     @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     @a_array = []
     @b_array = []
@@ -28,10 +28,10 @@ class Enigma
 
   def create_shifted_arrays(key,offset)
     if @key != nil && @offset != nil
-      @a_array = @alphabet.rotate(@shifts[:a])
-      @b_array = @alphabet.rotate(@shifts[:b])
-      @c_array = @alphabet.rotate(@shifts[:c])
-      @d_array = @alphabet.rotate(@shifts[:d])
+      @b_array = @alphabet.rotate(@shifts.shifts[:b])
+      @c_array = @alphabet.rotate(@shifts.shifts[:c])
+      @a_array = @alphabet.rotate(@shifts.shifts[:a])
+      @d_array = @alphabet.rotate(@shifts.shifts[:d])
     end
      #could use a while loop here
     # if @offset = nil
@@ -99,12 +99,14 @@ class Enigma
 
   def encrypt(message,key,offset)
     @message = message
+    @key = key
+    @offset = offset
+    add_shifts(Shifts.new)
     @shifts.create_keys(key)
     @shifts.offset_integrated(offset)
     @shifts.create_shifts
-    @enigma.add_shifts()
-    @enigma.create_shifted_arrays(key,offset)
-
+    create_shifted_arrays(@key,@offset)
+    @shifts
   end
 
 
