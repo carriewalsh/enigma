@@ -43,27 +43,6 @@ class EnigmaTest < MiniTest::Test
     assert_equal [3,20,2,10,18], @enigma.char_index #this requires an attr_writer...
   end
 
-  def test_a_chars_are_rotated
-    assert_equal "uucki", @enigma.shift_a
-  end
-
-  def test_b_chars_are_rotated
-    assert_equal "drcks", @enigma.shift_b
-  end
-
-  def test_c_chars_are_rotated
-    assert_equal "dulks", @enigma.shift_c
-  end
-
-  def test_d_chars_are_rotated
-    assert_equal "duccs", @enigma.shift_d
-  end
-
-  def test_all_chars_are_rotated
-    @enigma.shift_all
-    assert_equal "urlci", @enigma.message
-  end
-
   def test_encrypt_hash_method_returns_hash
     expected = {encryption: "message",
                 key: "12345",
@@ -75,6 +54,11 @@ class EnigmaTest < MiniTest::Test
     expected = {encryption: "urlci",
                 key: "12345",
                 date: "032489"}
+    assert_equal expected, @enigma.encrypt("ducks", "12345", "032489")
+  end
+
+  def test_key_not_given_creates_random_number_encrypted_message
+    skip
     assert_equal expected, @enigma.encrypt("ducks", "12345", "032489")
   end
 end
