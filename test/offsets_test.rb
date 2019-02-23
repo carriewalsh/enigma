@@ -30,4 +30,13 @@ class OffsetsTest < MiniTest::Test
                 d: 1}
     assert_equal expected, @shifts.offsets
   end
+
+  def test_combined_methods_create_hash
+    @shifts.offset_integrated("032489")
+    expected = {a: 5,
+      b: 1,
+      c: 2,
+      d: 1}
+      assert_equal expected, @shifts.offsets
+    end
 end

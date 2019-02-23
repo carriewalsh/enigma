@@ -4,6 +4,7 @@ module Offsets
   end
 
   def square_date(date)
+    # binding.pry
     integer = date.to_i
     (integer ** 2).to_s
   end
@@ -17,5 +18,11 @@ module Offsets
     @offsets[:b] = four[1].to_i
     @offsets[:c] = four[2].to_i
     @offsets[:d] = four[3].to_i
+  end
+
+  def offset_integrated(date)
+    square = square_date(date)
+    four = last_four(square)
+    create_offsets(four)
   end
 end

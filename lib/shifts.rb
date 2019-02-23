@@ -28,4 +28,11 @@ class Shifts
     @shifts[:c] = @keys[:c] + @offsets[:c]
     @shifts[:d] = @keys[:d] + @offsets[:d]
   end
+
+  def create_hashes(key,offset)
+    create_keys(key)
+    offset_integrated(offset)
+    create_shifts
+  end
+
 end
