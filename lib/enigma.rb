@@ -38,5 +38,9 @@ class Enigma
     # end
   end
 
+  def message_chars
+    @message.chars
+  end
+
 
 end
