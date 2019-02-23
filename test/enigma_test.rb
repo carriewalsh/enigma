@@ -4,7 +4,7 @@ class EnigmaTest < MiniTest::Test
 
   def setup
     @enigma = Enigma.new(message: "butts", key: "12345", offset: "032489")
-    @shift = Shift.new
+    @shifts = Shifts.new
   end
 
   def test_enigma_exists
@@ -40,7 +40,7 @@ class EnigmaTest < MiniTest::Test
     four = @shifts.last_four(square)
     @shifts.create_offsets(four)
     expected = {a: 17,
-                b: 24
+                b: 24,
                 c: 36,
                 d: 46}
     @enigma.add_shifts(@shifts.create_shifts)
@@ -48,11 +48,12 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_shifts_creates_shifted_arrays
+    skip
     @enigma.create_shifted_arrays(@key,@offset)
-    expected_a =
-    expected_b =
-    expected_c =
-    expected_d =
+    # expected_a =
+    # expected_b =
+    # expected_c =
+    # expected_d =
     assert_equal expected_a, @enigma.a_array
     assert_equal expected_b, @enigma.b_array
     assert_equal expected_c, @enigma.c_array

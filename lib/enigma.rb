@@ -1,5 +1,6 @@
+require "./lib/shifts"
+
 class Enigma
-  include Shifts
   attr_reader :message,
               :key,
               :offset,
@@ -12,10 +13,10 @@ class Enigma
   end
 
   def create_shifted_arrays(key,offset)
-    if @key == nil
-    end
-    if @offset = nil
-    end
+    # if @key == nil
+    # end
+    # if @offset = nil
+    # end
 
   end
 
