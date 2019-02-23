@@ -100,6 +100,17 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_longer_message_encrypted
-    enigma = Enigma.new(message: "ducks", key: "12345", offset: "032489")
+    enigma = Enigma.new(message: "we didnt start the fire", key: "12345", offset: "032489")
+    shifts = Shifts.new
+    shifts.create_keys(12345)
+    square = shifts.square_date("032489")
+    four = shifts.last_four(square)
+    shifts.create_offsets(four)
+    shifts.create_shifts
+    enigma.add_shifts(shifts.shifts)
+    enigma.create_shifted_arrays(enigma.key,enigma.offset)
+    enigma.shift_all
+    expected = "mbiwzawlqpbthqilybiyzon"
+    assert_equal expected, enigma.message
   end
 end
