@@ -5,6 +5,11 @@ class EnigmaTest < MiniTest::Test
   def setup
     @enigma = Enigma.new(message: "ducks", key: "12345", offset: "032489")
     @shifts = Shifts.new
+    @shifts.create_keys(@enigma.key)
+    square = @shifts.square_date(@enigma.offset)
+    four = @shifts.last_four(square)
+    @shifts.create_offsets(four)
+    @shifts.create_shifts
   end
 
   def test_enigma_exists
@@ -35,17 +40,19 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_shifts_can_be_added_to_enigma
-    @shifts.create_keys(12345)
-    square = @shifts.square_date("032489")
-    four = @shifts.last_four(square)
-    @shifts.create_offsets(four)
-    @shifts.create_shifts
+    enigma = Enigma.new(message: "ducks")
+    shifts = Shifts.new
+    shifts.create_keys(12345)
+    square = shifts.square_date("032489")
+    four = shifts.last_four(square)
+    shifts.create_offsets(four)
+    shifts.create_shifts
     expected = {a: 17,
                 b: 24,
                 c: 36,
                 d: 46}
-    @enigma.add_shifts(@shifts.shifts)
-    assert_equal expected, @enigma.shifts
+    enigma.add_shifts(shifts.shifts)
+    assert_equal expected, enigma.shifts
   end
 
   def test_shifts_creates_shifted_arrays
@@ -128,5 +135,9 @@ class EnigmaTest < MiniTest::Test
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
     @enigma.shift_all
     assert_equal "urlci", @enigma.message
+  end
+
+  def test_longer_message_encrypted
+    enigma = Enigma.new(message: "ducks", key: "12345", offset: "032489")
   end
 end

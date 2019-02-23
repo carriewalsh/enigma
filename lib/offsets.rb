@@ -4,6 +4,7 @@ module Offsets
   end
 
   def square_date(date)
+    # binding.pry
     integer = date.to_i
     (integer ** 2).to_s
   end
