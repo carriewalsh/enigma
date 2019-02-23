@@ -10,6 +10,8 @@ class EnigmaTest < MiniTest::Test
     four = @shifts.last_four(square)
     @shifts.create_offsets(four)
     @shifts.create_shifts
+    @enigma.add_shifts(@shifts.shifts)
+    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
   end
 
   def test_enigma_exists
@@ -56,7 +58,6 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_shifts_creates_shifted_arrays
-    @shifts.create_shifts
     @enigma.add_shifts(@shifts.shifts)
     @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
     expected_a = ["r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q"]
@@ -78,37 +79,22 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_a_chars_are_rotated
-    @shifts.create_shifts
-    @enigma.add_shifts(@shifts.shifts)
-    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
     assert_equal "uucki", @enigma.shift_a
   end
 
   def test_b_chars_are_rotated
-    @shifts.create_shifts
-    @enigma.add_shifts(@shifts.shifts)
-    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
     assert_equal "drcks", @enigma.shift_b
   end
 
   def test_c_chars_are_rotated
-    @shifts.create_shifts
-    @enigma.add_shifts(@shifts.shifts)
-    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
     assert_equal "dulks", @enigma.shift_c
   end
 
   def test_d_chars_are_rotated
-    @shifts.create_shifts
-    @enigma.add_shifts(@shifts.shifts)
-    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
     assert_equal "duccs", @enigma.shift_d
   end
 
   def test_all_chars_are_rotated
-    @shifts.create_shifts
-    @enigma.add_shifts(@shifts.shifts)
-    @enigma.create_shifted_arrays(@enigma.key,@enigma.offset)
     @enigma.shift_all
     assert_equal "urlci", @enigma.message
   end
