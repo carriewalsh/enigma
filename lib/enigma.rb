@@ -10,6 +10,7 @@ class Enigma
               :b_array,
               :c_array,
               :d_array
+  attr_writer :message #only for test...
   def initialize
     @message = nil
     @shifts = Shifts.new

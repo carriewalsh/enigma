@@ -4,7 +4,11 @@ class EnigmaTest < MiniTest::Test
 
   def setup
     @enigma = Enigma.new
-
+    @enigma.shifts.create_keys(12345)
+    @enigma.shifts.offset_integrated("032489")
+    @enigma.shifts.create_shifts
+    @enigma.create_shifted_arrays(12345,"032489")
+    @enigma.message = "ducks" #makes it so we need attr_writer
   end
 
   def test_enigma_exists
@@ -36,50 +40,28 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_message_chars_indices_in_array
-    skip
-    assert_equal [3,20,2,10,18], @enigma.char_index
+    assert_equal [3,20,2,10,18], @enigma.char_index #this requires an attr_writer...
   end
 
   def test_a_chars_are_rotated
-    skip
     assert_equal "uucki", @enigma.shift_a
   end
 
   def test_b_chars_are_rotated
-    skip
     assert_equal "drcks", @enigma.shift_b
   end
 
   def test_c_chars_are_rotated
-    skip
     assert_equal "dulks", @enigma.shift_c
   end
 
   def test_d_chars_are_rotated
-    skip
     assert_equal "duccs", @enigma.shift_d
   end
 
   def test_all_chars_are_rotated
-    skip
     @enigma.shift_all
     assert_equal "urlci", @enigma.message
-  end
-
-  def test_longer_message_encrypted
-    skip
-    enigma = Enigma.new(message: "we didnt start the fire", key: "12345", offset: "032489")
-    shifts = Shifts.new
-    shifts.create_keys(12345)
-    square = shifts.square_date("032489")
-    four = shifts.last_four(square)
-    shifts.create_offsets(four)
-    shifts.create_shifts
-    enigma.add_shifts(shifts.shifts)
-    enigma.create_shifted_arrays(enigma.key,enigma.offset)
-    enigma.shift_all
-    expected = "mbiwzawlqpbthqilybiyzon"
-    assert_equal expected, enigma.message
   end
 
   def test_encrypt_hash_method_returns_hash
