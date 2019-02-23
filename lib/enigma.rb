@@ -1,4 +1,5 @@
 class Enigma
+  include Shifts
   attr_reader :message,
               :key,
               :offset,
