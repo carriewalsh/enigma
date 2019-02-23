@@ -21,4 +21,11 @@ class Shifts
             c: nil,
             d: nil}
   end
+
+  def create_shifts
+    @shifts[:a] = @keys[:a] + @offsets[:a]
+    @shifts[:b] = @keys[:b] + @offsets[:b]
+    @shifts[:c] = @keys[:c] + @offsets[:c]
+    @shifts[:d] = @keys[:d] + @offsets[:d]
+  end
 end
