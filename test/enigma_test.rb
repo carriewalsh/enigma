@@ -4,6 +4,7 @@ class EnigmaTest < MiniTest::Test
 
   def setup
     @enigma = Enigma.new(message: "butts", key: "12345", offset: "032489")
+    @shift = Shift.new
   end
 
   def test_enigma_exists
@@ -31,6 +32,19 @@ class EnigmaTest < MiniTest::Test
   def test_enigma_defaults_with_normal_alpha_array
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     assert_equal expected, @enigma.alphabet
+  end
+
+  def test_shifts_can_be_added_to_enigma
+    @shifts.create_keys(12345)
+    square = @shifts.square_date("032489")
+    four = @shifts.last_four(square)
+    @shifts.create_offsets(four)
+    expected = {a: 17,
+                b: 24
+                c: 36,
+                d: 46}
+    @enigma.add_shifts(@shifts.create_shifts)
+    assert_equal expected, @enigma.shifts
   end
 
   def test_shifts_creates_shifted_arrays
