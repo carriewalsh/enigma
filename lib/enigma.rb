@@ -12,8 +12,8 @@ class Enigma
               :d_array
   def initialize
     @message = nil
-    @key = nil
-    @offset = nil
+    # @key = nil
+    # @offset = nil
     @shifts = Shifts.new
     @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     @a_array = []
@@ -27,7 +27,7 @@ class Enigma
   end
 
   def create_shifted_arrays(key,offset)
-    if @key != nil && @offset != nil
+    if key != nil && offset != nil
       @b_array = @alphabet.rotate(@shifts.shifts[:b])
       @c_array = @alphabet.rotate(@shifts.shifts[:c])
       @a_array = @alphabet.rotate(@shifts.shifts[:a])
@@ -99,14 +99,13 @@ class Enigma
 
   def encrypt(message,key,offset)
     @message = message
-    @key = key
-    @offset = offset
     add_shifts(Shifts.new)
     @shifts.create_keys(key)
     @shifts.offset_integrated(offset)
     @shifts.create_shifts
-    create_shifted_arrays(@key,@offset)
-    @shifts
+    create_shifted_arrays(key,offset)
+    shift_all
+    @message
   end
 
 
