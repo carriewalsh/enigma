@@ -43,6 +43,8 @@ class CrackerTest < MiniTest::Test
   end
 
   def test_offsets_can_be_calculated
+    @cracker.find_letter_align("afdsrutlgu kq")
+    @cracker.calculate_offsets
     expected = {a: 6,
                 b: 12,
                 c: 16,

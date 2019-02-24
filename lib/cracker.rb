@@ -11,6 +11,7 @@ class Cracker
                 b: nil,
                 c: nil,
                 d: nil}
+    @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
   end
 
   def count_chars(message)
@@ -42,5 +43,14 @@ class Cracker
                   c: last_four[3],
                   d: last_four[0]}
     end
+  end
+
+  def calculate_offsets
+    @offsets[:a] = @alphabet.index(@letter_align[:a]) - @alphabet.index("d")
+    @offsets[:b] = @alphabet.index(@letter_align[:b]) - @alphabet.index(" ")
+    @offsets[:c] = @alphabet.index(@letter_align[:c]) - @alphabet.index("e")
+    @offsets[:d] = @alphabet.index(@letter_align[:d]) - @alphabet.index("n")
+
+    binding.pry
   end
 end
