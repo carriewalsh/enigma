@@ -16,7 +16,7 @@ class Decrypt
   decrypted = enigma.decrypt(encrypted,key,offset)
 
 
-  writer.write(decrypted)
+  writer.write(decrypted[:decryption])
   writer.close
 
 end
