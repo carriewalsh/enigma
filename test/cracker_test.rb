@@ -57,6 +57,15 @@ class CrackerTest < MiniTest::Test
     assert_equal expected, @cracker.shifts
   end
 
+  def test_keys_can_be_calculated_based_on_date
+    @cracker.find_letter_align("afdsrutlgu kq")
+    @cracker.calculate_shifts
+    expected = {a: 6,
+                b: 12,
+                c: 16,
+                d: 23}
+  end
+
   def test_cracker_finds_key_for_encrypted_message
     skip
     assert_equal 33977, @cracker.crack("afdsrutlgu kq","230219")

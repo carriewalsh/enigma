@@ -1,12 +1,18 @@
 class Cracker
-  attr_reader :key,:shifts, :letter_align
+  attr_reader :key,
+              :shifts,
+              :keys,
+              :letter_align
   def initialize
     @key = nil
     @shifts = {a: nil,
                 b: nil,
                 c: nil,
                 d: nil}
-
+    @keys = {a: nil,
+                b: nil,
+                c: nil,
+                d: nil}
     @letter_align = {a: nil,
                 b: nil,
                 c: nil,
