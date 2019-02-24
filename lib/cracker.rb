@@ -56,6 +56,20 @@ class Cracker
     @offsets.each do |letter,offset|
       @keys[letter] = @shifts[letter] - @offsets[letter]
     end
+    @keys.each do |letter,key|
+      @keys[letter] = key.to_s.rjust(2,"0")
+    end
+  end
+
+  def first_second_keys
+    if @keys[:a][1] != @keys[:b][0] && @keys[:a] > 100
+      @keys[:a] + 27
+    end
+  end
+
+  def find_key
+
+
   end
 
 end
