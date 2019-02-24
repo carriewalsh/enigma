@@ -54,7 +54,14 @@ class EnigmaTest < MiniTest::Test
     expected = {encryption: "urlci",
                 key: "12345",
                 date: "032489"}
-    assert_equal expected, @enigma.encrypt("ducks", "12345", "032489")
+    assert_equal expected, @enigma.encrypt("Ducks", "12345", "032489")
+  end
+
+  def test_encrypt_method_creates_encrypted_message_with_capitals
+    expected = {encryption: "urlci",
+                key: "12345",
+                date: "032489"}
+    assert_equal expected, @enigma.encrypt("DUCKS", "12345", "032489")
   end
 
   def test_key_not_given_creates_random_number_encrypted_message

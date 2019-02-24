@@ -3,6 +3,7 @@ module LetterShift
     count = 0
     char_index(message).each_with_index do |char,index|
       if index == count
+        # if char
         message[index] = @a_array[char]
         count += 4
       end
