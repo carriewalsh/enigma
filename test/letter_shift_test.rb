@@ -46,4 +46,9 @@ class LetterShiftTest < MiniTest::Test
   def test_d_encrypted_letters_rotated_back
     assert_equal "ducks", @enigma.shift_back_d("duccs")
   end
+
+  def test_all_chars_are_rotated_back
+    assert_equal "ducks", @enigma.shift_all_back("urlci")
+
+  end
 end
