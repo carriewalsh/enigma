@@ -19,4 +19,6 @@ class Decrypt
   writer.write(decrypted[:decryption])
   writer.close
 
+  puts "Created #{ARGV[1]} with the key #{ARGV[2]} and date #{ARGV[3]}"
+
 end
