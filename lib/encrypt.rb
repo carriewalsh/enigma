@@ -19,7 +19,7 @@ reader.close
 writer = File.open(ARGV[1],"w")
 encrypted = enigma.encrypt(message.rstrip,key,offset)
 
-writer.write(encrypted)
+writer.write(encrypted[:encryption])
 writer.close
 puts "Created #{ARGV[1]} with the key #{key} and date #{offset}"
 
