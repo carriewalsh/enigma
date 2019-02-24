@@ -3,9 +3,12 @@ module LetterShift
     count = 0
     char_index(message).each_with_index do |char,index|
       if index == count
-        # if char
-        message[index] = @a_array[char]
-        count += 4
+        if char != nil
+          message[index] = @a_array[char]
+          count += 4
+        else
+          count += 4
+        end
       end
     end
     message #can I get rid of these returns and the tests since they are in the shift_all methods?
@@ -15,8 +18,12 @@ module LetterShift
     count = 1
     char_index(message).each_with_index do |char,index|
       if index == count
-        message[index] = @b_array[char]
-        count += 4
+        if char != nil
+          message[index] = @b_array[char]
+          count += 4
+        else
+          count += 4
+        end
       end
     end
     message
@@ -26,8 +33,12 @@ module LetterShift
     count = 2
     char_index(message).each_with_index do |char,index|
       if index == count
-        message[index] = @c_array[char]
-        count += 4
+        if char != nil
+          message[index] = @c_array[char]
+          count += 4
+        else
+          count += 4
+        end
       end
     end
     message
@@ -37,8 +48,12 @@ module LetterShift
     count = 3
     char_index(message).each_with_index do |char,index|
       if index == count
-        message[index] = @d_array[char]
-        count += 4
+        if char != nil
+          message[index] = @d_array[char]
+          count += 4
+        else
+          count += 4
+        end
       end
     end
     message
