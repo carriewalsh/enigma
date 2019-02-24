@@ -1,11 +1,19 @@
+require "./lib/offsets"
+
 class Cracker
+  include Offsets
   attr_reader :key,
               :shifts,
+              :offsets,
               :keys,
               :letter_align
   def initialize
     @key = nil
     @shifts = {a: nil,
+                b: nil,
+                c: nil,
+                d: nil}
+    @offsets = {a: nil,
                 b: nil,
                 c: nil,
                 d: nil}
@@ -42,4 +50,12 @@ class Cracker
       diff > 0 ? @shifts[key] = diff : @shifts[key] = 27 + diff
     end
   end
+
+  def calculate_keys(date)
+    offset_integrated(date)
+    @offsets.each do |letter,offset|
+      @keys[letter] = @shifts[letter] - @offsets[letter]
+    end
+  end
+
 end

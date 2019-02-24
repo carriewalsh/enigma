@@ -64,6 +64,8 @@ class CrackerTest < MiniTest::Test
                 b: 12,
                 c: 16,
                 d: 23}
+    @cracker.calculate_keys(230219)
+    assert_equal expected, @cracker.keys
   end
 
   def test_cracker_finds_key_for_encrypted_message
