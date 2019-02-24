@@ -29,4 +29,20 @@ class CrackerTest < MiniTest::Test
     assert_equal expected, @cracker.letter_align
   end
 
+  def test_cracker_counts_characters_in_encryption
+    assert_equal 13, @cracker.count_chars("afdsrutlgu kq")
+  end
+
+  def test_cracker_aligns_chars_to_shift_letters
+    expected = {a: "q",
+                b: "u",
+                c: " ",
+                d: "k"}
+    assert_equal expected, @cracker.letter_align
+  end
+
+  def test_cracker_finds_key_for_encrypted_message
+    assert_equal 33977, @cracker.crack("afdsrutlgu kq","230219")
+  end
+
 end
