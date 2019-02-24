@@ -13,4 +13,20 @@ class CrackerTest < MiniTest::Test
     assert_nil @cracker.key
   end
 
+  def test_cracker_starts_with_empty_offsets_hash
+    expected = {a: nil,
+                b: nil,
+                c: nil,
+                d: nil}
+    assert_equal expected, @cracker.offsets
+  end
+
+  def test_cracker_starts_with_empty_letter_align_hash
+    expected = {a: nil,
+                b: nil,
+                c: nil,
+                d: nil}
+    assert_equal expected, @cracker.letter_align
+  end
+
 end
