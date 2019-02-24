@@ -34,8 +34,8 @@ class CrackerTest < MiniTest::Test
   end
 
   def test_letter_pairs_made
-    expected = [["d","q"],[" ","u"],["e"," "],["n","k"]]
-    assert_equal expected, @cracker.letter_pairs
+    expected = [[" ","u"],["e"," "],["n","k"],["d","q"]]
+    assert_equal expected, @cracker.letter_pairs("afdsrutlgu kq")
   end
 
   def test_cracker_aligns_chars_to_shift_letters

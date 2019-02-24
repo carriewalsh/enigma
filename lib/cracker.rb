@@ -18,6 +18,10 @@ class Cracker
     message.length
   end
 
+  def letter_pairs(message)
+    [" ","e","n","d"].zip(message[-4,4].chars)
+  end
+
   def find_letter_align(message)
     # last_four = message[-4,4]
     # case
