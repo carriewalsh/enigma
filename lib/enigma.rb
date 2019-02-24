@@ -60,7 +60,9 @@ class Enigma
   end
 
   def decrypt(encryption,key,offset)
-    message = ""
-    decrypt_hash(message,key,offset)
+    @shifts.create_hashes(key,offset)
+    create_shifted_arrays(key,offset)
+    shift_all_back(encryption)
+    decrypt_hash(encryption,key,offset)
   end
 end
