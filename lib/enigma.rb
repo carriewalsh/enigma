@@ -3,11 +3,8 @@ require "./lib/letter_shift"
 
 class Enigma
   include LetterShift
-  
-  attr_reader :message,
-              :key,
-              :offset,
-              :shifts,
+
+  attr_reader :shifts,
               :alphabet,
               :a_array,
               :b_array,
@@ -17,7 +14,6 @@ class Enigma
   attr_writer :message #only for test...
 
   def initialize
-    @message = nil
     @shifts = Shifts.new
     @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     @a_array = []
@@ -40,8 +36,8 @@ class Enigma
     # end
   end
 
-  def char_index
-    @message.chars.map {|char| @alphabet.index(char)}
+  def char_index(message)
+    message.chars.map {|char| @alphabet.index(char)}
   end
 
   def encrypt_hash(encryption,key,offset)
@@ -51,12 +47,22 @@ class Enigma
   end
 
   def encrypt(message,key,offset)
-    @message = message
-    @shifts.create_hashes(key,offset)
+    @shifts.create_hashes(key,offset) #could this go in create_shifted_arrays?
     create_shifted_arrays(key,offset)
-    shift_all
-    encrypt_hash(@message,key,offset)
+    shift_all(message)
+    encrypt_hash(message,key,offset)
   end
 
+  def decrypt_hash(decryption,key,offset)
+    {decryption: decryption,
+    key: key,
+    date: offset}
+  end
 
+  def decrypt(encryption,key,offset)
+    @shifts.create_hashes(key,offset)
+    create_shifted_arrays(key,offset)
+    shift_all_back(encryption)
+    decrypt_hash(encryption,key,offset)
+  end
 end

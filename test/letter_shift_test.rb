@@ -11,23 +11,44 @@ class LetterShiftTest < MiniTest::Test
   end
 
   def test_a_chars_are_rotated
-    assert_equal "uucki", @enigma.shift_a
+    assert_equal "uucki", @enigma.shift_a("ducks")
   end
 
   def test_b_chars_are_rotated
-    assert_equal "drcks", @enigma.shift_b
+    assert_equal "drcks", @enigma.shift_b("ducks")
   end
 
   def test_c_chars_are_rotated
-    assert_equal "dulks", @enigma.shift_c
+    assert_equal "dulks", @enigma.shift_c("ducks")
   end
 
   def test_d_chars_are_rotated
-    assert_equal "duccs", @enigma.shift_d
+    assert_equal "duccs", @enigma.shift_d("ducks")
   end
 
   def test_all_chars_are_rotated
-    @enigma.shift_all
-    assert_equal "urlci", @enigma.message
+
+    assert_equal "urlci", @enigma.shift_all("ducks")
+  end
+
+  def test_a_encrypted_letters_rotated_back
+    assert_equal "ducks", @enigma.shift_back_a("uucki")
+  end
+
+  def test_b_encrypted_letters_rotated_back
+    assert_equal "ducks", @enigma.shift_back_b("drcks")
+  end
+
+  def test_c_encrypted_letters_rotated_back
+    assert_equal "ducks", @enigma.shift_back_c("dulks")
+  end
+
+  def test_d_encrypted_letters_rotated_back
+    assert_equal "ducks", @enigma.shift_back_d("duccs")
+  end
+
+  def test_all_chars_are_rotated_back
+    assert_equal "ducks", @enigma.shift_all_back("urlci")
+
   end
 end
