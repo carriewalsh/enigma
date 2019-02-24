@@ -39,10 +39,10 @@ class CrackerTest < MiniTest::Test
   end
 
   def test_cracker_aligns_chars_to_shift_letters
-    expected = {a: [" ","u"],
-                b: ["e"," "],
-                c: ["n","k"],
-                d: ["d","q"]}
+    expected = {a: ["d","q"],
+                b: [" ","u"],
+                c: ["e"," "],
+                d: ["n","k"]}
     @cracker.find_letter_align("afdsrutlgu kq")
     assert_equal expected, @cracker.letter_align
   end
@@ -50,10 +50,10 @@ class CrackerTest < MiniTest::Test
   def test_shifts_can_be_calculated
     @cracker.find_letter_align("afdsrutlgu kq")
     @cracker.calculate_shifts
-    expected = {a: 6,
-                b: 12,
-                c: 16,
-                d: 23}
+    expected = {a: 13,
+                b: 21,
+                c: 22,
+                d: 24}
     assert_equal expected, @cracker.shifts
   end
 
