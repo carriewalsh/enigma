@@ -70,8 +70,12 @@ module LetterShift
     count = 0
     encryption.chars.each_with_index do |char, index|
       if index == count
-        encryption[index] = @alphabet[@a_array.index(char)]
-        count += 4
+        if @alphabet.include?(char)
+          encryption[index] = @alphabet[@a_array.index(char)]
+          count += 4
+        else
+          count += 4
+        end
       end
     end
     encryption
@@ -81,8 +85,12 @@ module LetterShift
     count = 1
     encryption.chars.each_with_index do |char, index|
       if index == count
-        encryption[index] = @alphabet[@b_array.index(char)]
-        count += 4
+        if @alphabet.include?(char)
+          encryption[index] = @alphabet[@b_array.index(char)]
+          count += 4
+        else
+          count += 4
+        end
       end
     end
     encryption
@@ -92,8 +100,12 @@ module LetterShift
     count = 2
     encryption.chars.each_with_index do |char, index|
       if index == count
-        encryption[index] = @alphabet[@c_array.index(char)]
-        count += 4
+        if @alphabet.include?(char)
+          encryption[index] = @alphabet[@c_array.index(char)]
+          count += 4
+        else
+          count += 4
+        end
       end
     end
     encryption
@@ -103,8 +115,12 @@ module LetterShift
     count = 3
     encryption.chars.each_with_index do |char, index|
       if index == count
-        encryption[index] = @alphabet[@d_array.index(char)]
-        count += 4
+        if @alphabet.include?(char)
+          encryption[index] = @alphabet[@d_array.index(char)]
+          count += 4
+        else
+          count += 4
+        end
       end
     end
     encryption
