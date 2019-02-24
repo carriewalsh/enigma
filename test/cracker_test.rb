@@ -38,6 +38,7 @@ class CrackerTest < MiniTest::Test
                 b: "u",
                 c: " ",
                 d: "k"}
+    @cracker.find_letter_align("afdsrutlgu kq")
     assert_equal expected, @cracker.letter_align
   end
 
