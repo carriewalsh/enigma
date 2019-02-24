@@ -1,4 +1,5 @@
 require "./lib/enigma"
+require "pry"
 
 class Decrypt
   #include undecided module(s)
@@ -10,7 +11,9 @@ class Decrypt
   reader.close
 
   writer = File.open(ARGV[1],"w")
-  decrypted = enigma.decrypt(encrypted,)
+  key = ARGV[2]
+  offset = ARGV[3]
+  decrypted = enigma.decrypt(encrypted,key,offset)
 
 
   writer.write(decrypted)

@@ -47,7 +47,7 @@ class Enigma
   end
 
   def encrypt(message,key,offset)
-    @shifts.create_hashes(key,offset)
+    @shifts.create_hashes(key,offset) #could this go in create_shifted_arrays?
     create_shifted_arrays(key,offset)
     shift_all(message)
     encrypt_hash(message,key,offset)
