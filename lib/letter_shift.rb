@@ -7,7 +7,7 @@ module LetterShift
         count += 4
       end
     end
-    message
+    message #can I get rid of these returns and the tests since they are in the shift_all methods?
   end
 
   def shift_b(message)
@@ -94,4 +94,10 @@ module LetterShift
     encryption
   end
 
+  def shift_all_back(encryption)
+    shift_back_a(encryption)
+    shift_back_b(encryption)
+    shift_back_c(encryption)
+    shift_back_d(encryption)
+  end
 end
