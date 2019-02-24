@@ -1,8 +1,10 @@
 require "./lib/shifts"
 require "./lib/letter_shift"
+require "./lib/letter_shift_back"
 
 class Enigma
   include LetterShift
+  include LetterShiftBack
 
   attr_reader :shifts,
               :alphabet,
