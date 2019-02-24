@@ -6,7 +6,8 @@ class Cracker
               :shifts,
               :offsets,
               :keys,
-              :letter_align
+              :letter_align,
+              :options_hash
   def initialize
     @key = nil
     @shifts = {a: nil,
@@ -25,6 +26,10 @@ class Cracker
                 b: nil,
                 c: nil,
                 d: nil}
+    @options_hash = {first:[],
+                    second:[],
+                    third:[],
+                    fourth:[]}
     @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
   end
 
@@ -61,15 +66,22 @@ class Cracker
     end
   end
 
-  def first_second_keys
-    if @keys[:a][1] != @keys[:b][0] && @keys[:a] > 100
-      @keys[:a] + 27
-    end
+  def options_array(key,ordinal)
+    @options_hash[ordinal] << key
+    @options_hash[ordinal] << (key.to_i + 27).to_s
+    @options_hash[ordinal] << (key.to_i + 54).to_s
+    @options_hash[ordinal] << (key.to_i + 81).to_s
+  end
+
+  def all_option_arrays
+    options_array(@keys[:a],:first)
+    options_array(@keys[:b],:second)
+    options_array(@keys[:c],:third)
+    options_array(@keys[:d],:fourth)
   end
 
   def find_key
-
-
+    all_option_arrays
   end
 
 end
