@@ -77,7 +77,7 @@ module Cracker
     calculate_shifts
     calculate_keys(date)
     all_option_arrays
-    # binding.pry
+    binding.pry
     find_key
     decrypt(encryption,@key.to_s,date)
   end

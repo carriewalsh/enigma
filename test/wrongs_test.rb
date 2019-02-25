@@ -13,6 +13,14 @@ class WrongsTest < MiniTest::Test
     @enigma.all_option_arrays
   end
 
+  def test_can_remove_invalid_numbers
+    expected = {:first=>["06", "33", "60", "87"],
+                :second=>["12", "39", "66", "93"],
+                :third=>["16", "43", "70", "97"],
+                :fourth=>["23", "50", "77",]}
+    assert_equal expected, @enigma.options_hash
+  end
+
   def test_can_remove_first_numbers_that_return_false
     @enigma.remove_first_wrongs
     assert_equal ["06","33"], @enigma.options_hash[:first]
