@@ -8,8 +8,8 @@ class Encrypt
   include Offsets
 
 enigma = Enigma.new
-key = "12345 "#enigma.shifts.random_key
-offset = "032489" #enigma.shifts.today_offset
+key = enigma.shifts.random_key #"12345"
+offset = enigma.shifts.today_offset #"032489"
 
 reader = File.open(ARGV[0],"r")
 

@@ -7,8 +7,12 @@ class Shifts
 
   attr_reader :keys,
               :offsets,
-              :shifts
-              
+              :shifts,
+              :a_array,
+              :b_array,
+              :c_array,
+              :d_array
+
   def initialize
     @keys = {a: nil,
             b: nil,
@@ -22,6 +26,11 @@ class Shifts
             b: nil,
             c: nil,
             d: nil}
+    @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+    @a_array = []
+    @b_array = []
+    @c_array = []
+    @d_array = []
   end
 
   def create_shifts
@@ -29,6 +38,20 @@ class Shifts
     @shifts[:b] = @keys[:b] + @offsets[:b]
     @shifts[:c] = @keys[:c] + @offsets[:c]
     @shifts[:d] = @keys[:d] + @offsets[:d]
+  end
+
+  def create_shifted_arrays(key,offset)
+    while key == nil && offset == nil
+      # key = @shifts.random_key
+      # offset = @shifts.today_offset
+    end
+    @a_array = @alphabet.rotate(@shifts[:a])
+    @b_array = @alphabet.rotate(@shifts[:b])
+    @c_array = @alphabet.rotate(@shifts[:c])
+    @d_array = @alphabet.rotate(@shifts[:d])
+     #could use a while loop here
+    # if @offset = nil
+    # end
   end
 
   def create_hashes(key,offset)
