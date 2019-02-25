@@ -10,7 +10,6 @@ class DecrypterTest < MiniTest::Test
   end
 
   def test_decrypt_hash_method_returns_hash
-    skip
     expected = {decryption: "message",
                 key: "12345",
                 date: "032489"}
@@ -18,7 +17,6 @@ class DecrypterTest < MiniTest::Test
   end
 
   def test_decrypt_method_decodes_message
-    skip
     expected = {decryption: "ducks",
                 key: "12345",
                 date: "032489"}
