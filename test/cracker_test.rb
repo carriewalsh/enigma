@@ -85,8 +85,10 @@ class CrackerTest < MiniTest::Test
     @cracker.calculate_shifts
     @cracker.calculate_keys(230219)
     @cracker.all_option_arrays
-    @cracker.check_digit(@cracker.options_hash[:first][0],@cracker.options_hash[:second])
-    assert_equal ["06","33"], @cracker.options_hash[:first]
+    actual_1 = @cracker.check_digit(@cracker.options_hash[:first][0],@cracker.options_hash[:second])
+    assert_equal false, actual_1
+    actual_2 = @cracker.check_digit(@cracker.options_hash[:first][1],@cracker.options_hash[:second])
+    assert_equal true, actual_2
   end
 
   def test_cracker_finds_key_for_encrypted_message

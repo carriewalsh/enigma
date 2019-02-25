@@ -80,6 +80,10 @@ class Cracker
     options_array(@keys[:d],:fourth)
   end
 
+  def check_digit(num,array)
+    array.any? {|number| number[1] == num[0]}
+  end
+
   def find_key
     all_option_arrays
   end
