@@ -78,7 +78,15 @@ class CrackerTest < MiniTest::Test
                 :third=>["16", "43", "70", "97"],
                 :fourth=>["23", "50", "77", "104"]}
     assert_equal expected, @cracker.options_hash
+  end
 
+  def test_can_compare_number_to_array_of_numbers
+    @cracker.find_letter_align("afdsrutlgu kq")
+    @cracker.calculate_shifts
+    @cracker.calculate_keys(230219)
+    @cracker.all_option_arrays
+    @cracker.check_digit(@cracker.options_hash[:first][0],@cracker.options_hash[:second])
+    assert_equal ["06","33"], @cracker.options_hash[:first]
   end
 
   def test_cracker_finds_key_for_encrypted_message
