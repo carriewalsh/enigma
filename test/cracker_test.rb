@@ -68,6 +68,19 @@ class CrackerTest < MiniTest::Test
     assert_equal expected, @cracker.keys
   end
 
+  def test_key_options_can_be_found
+    @cracker.find_letter_align("afdsrutlgu kq")
+    @cracker.calculate_shifts
+    @cracker.calculate_keys(230219)
+    @cracker.all_option_arrays
+    expected = {:first=>["06", "33", "60", "87"],
+                :second=>["12", "39", "66", "93"],
+                :third=>["16", "43", "70", "97"],
+                :fourth=>["23", "50", "77", "104"]}
+    assert_equal expected, @cracker.options_hash
+
+  end
+
   def test_cracker_finds_key_for_encrypted_message
     @cracker.find_letter_align("afdsrutlgu kq")
     @cracker.calculate_shifts
