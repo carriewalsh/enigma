@@ -80,8 +80,16 @@ class Cracker
     options_array(@keys[:d],:fourth)
   end
 
-  def check_digit(num,array)
-    array.any? {|number| number[1] == num[0]}
+  def check_digit(ones_num,array)
+    array.any? {|tens_num| tens_num[0] == ones_num[1]}
+  end
+
+  def remove_first_wrongs
+    [3,2,1,0].each do |number|
+      if check_digit(@options_hash[:first][number],@options_hash[:second]) == false
+        @options_hash[:first].delete_at(number)
+      end
+    end
   end
 
   def find_key
