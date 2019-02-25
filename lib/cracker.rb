@@ -86,8 +86,10 @@ class Cracker
 
   def remove_first_wrongs
     [3,2,1,0].each do |number|
-      if check_digit(@options_hash[:first][number],@options_hash[:second]) == false
-        @options_hash[:first].delete_at(number)
+      if number != nil
+        if check_digit(@options_hash[:first][number],@options_hash[:second]) == false
+          @options_hash[:first].delete_at(number)
+        end
       end
     end
   end
@@ -109,7 +111,9 @@ class Cracker
   end
 
   def find_key
-    all_option_arrays
+    remove_third_wrongs
+    remove_second_wrongs
+    remove_first_wrongs
   end
 
 end
