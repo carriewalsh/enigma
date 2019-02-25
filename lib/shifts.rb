@@ -14,19 +14,10 @@ class Shifts
               :d_array
 
   def initialize
-    @keys = {a: nil,
-            b: nil,
-            c: nil,
-            d: nil}
-    @offsets = {a: nil,
-            b: nil,
-            c: nil,
-            d: nil}
-    @shifts = {a: nil,
-            b: nil,
-            c: nil,
-            d: nil}
-    @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+    @keys = {a: nil, b: nil, c: nil, d: nil}
+    @offsets = {a: nil, b: nil, c: nil, d: nil}
+    @shifts = {a: nil, b: nil, c: nil, d: nil}
+    @alphabet = ("a".."z").to_a << " "
     @a_array = []
     @b_array = []
     @c_array = []

@@ -1,5 +1,4 @@
 module LetterShiftBack
-
     def shift_back_a(encryption)
       count = 0
       encryption.chars.each_with_index do |char, index|

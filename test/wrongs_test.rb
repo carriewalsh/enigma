@@ -32,8 +32,18 @@ class WrongsTest < MiniTest::Test
     assert_equal ["39"], @enigma.options_hash[:second]
   end
 
+  def test_can_remove_second_numbers_that_return_false_reverse
+    @enigma.remove_second_wrongs_reverse
+    assert_equal ["39", "66"], @enigma.options_hash[:second]
+  end
+
   def test_can_remove_third_numbers_that_return_false
     @enigma.remove_third_wrongs_forward
+    assert_equal ["97"], @enigma.options_hash[:third]
+  end
+
+  def test_can_remove_third_numbers_that_return_false_reverse
+    @enigma.remove_third_wrongs_reverse
     assert_equal ["97"], @enigma.options_hash[:third]
   end
 

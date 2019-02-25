@@ -8,7 +8,6 @@ class EnigmaTest < MiniTest::Test
     @enigma.shifts.offset_integrated("032489")
     @enigma.shifts.create_shifts
     @enigma.shifts.create_shifted_arrays(12345,"032489")
-    @enigma.message = "ducks" #makes it so we need attr_writer
   end
 
   def test_enigma_exists
@@ -37,9 +36,5 @@ class EnigmaTest < MiniTest::Test
     assert_equal expected_b, @enigma.shifts.b_array
     assert_equal expected_c, @enigma.shifts.c_array
     assert_equal expected_d, @enigma.shifts.d_array
-  end
-
-  def test_message_chars_indices_in_array
-    assert_equal [3,20,2,10,18], @enigma.char_index("ducks") #this requires an attr_writer...
   end
 end

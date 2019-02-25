@@ -7,20 +7,19 @@ class Encrypt
   include Keys
   include Offsets
 
-enigma = Enigma.new
-key = enigma.shifts.random_key #"12345"
-offset = enigma.shifts.today_offset #"032489"
+  enigma = Enigma.new
+  key = enigma.shifts.random_key
+  offset = enigma.shifts.today_offset
 
-reader = File.open(ARGV[0],"r")
+  reader = File.open(ARGV[0],"r")
 
-message = reader.read
-reader.close
+  message = reader.read
+  reader.close
 
-writer = File.open(ARGV[1],"w")
-encrypted = enigma.encrypt(message.rstrip,key,offset)
+  writer = File.open(ARGV[1],"w")
+  encrypted = enigma.encrypt(message.rstrip,key,offset)
 
-writer.write(encrypted[:encryption])
-writer.close
-puts "Created #{ARGV[1]} with the key #{key} and date #{offset}"
-
+  writer.write(encrypted[:encryption])
+  writer.close
+  puts "Created #{ARGV[1]} with the key #{key} and date #{offset}"
 end

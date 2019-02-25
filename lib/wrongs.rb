@@ -1,5 +1,4 @@
 module Wrongs
-
   def remove_invalid_numbers
     @options_hash.each do |letter,array|
       @options_hash[letter] = array.find_all {|option| option.length == 2}

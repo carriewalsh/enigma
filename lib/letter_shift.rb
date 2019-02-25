@@ -7,7 +7,6 @@ module LetterShift
         count += 4
       end
     end
-    message #can I get rid of these returns and the tests since they are in the shift_all methods?
   end
 
   def a_alpha_if(message,char,index)
@@ -24,7 +23,6 @@ module LetterShift
         count += 4
       end
     end
-    message
   end
 
   def b_alpha_if(message,char,index)
@@ -41,7 +39,6 @@ module LetterShift
         count += 4
       end
     end
-    message
   end
 
   def c_alpha_if(message,char,index)
@@ -58,7 +55,6 @@ module LetterShift
         count += 4
       end
     end
-    message
   end
 
   def d_alpha_if(message,char,index)
@@ -72,5 +68,6 @@ module LetterShift
     shift_b(message)
     shift_c(message)
     shift_d(message)
+    message
   end
 end
