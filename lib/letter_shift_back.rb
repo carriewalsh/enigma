@@ -13,7 +13,7 @@ module LetterShiftBack
 
     def a_back_alpha_if(encryption,char,index)
       if @alphabet.include?(char)
-        encryption[index] = @alphabet[@a_array.index(char)]
+        encryption[index] = @alphabet[@shifts.a_array.index(char)]
       end
     end
 
@@ -30,7 +30,7 @@ module LetterShiftBack
 
     def b_back_alpha_if(encryption,char,index)
       if @alphabet.include?(char)
-        encryption[index] = @alphabet[@b_array.index(char)]
+        encryption[index] = @alphabet[@shifts.b_array.index(char)]
       end
     end
 
@@ -47,7 +47,7 @@ module LetterShiftBack
 
     def c_back_alpha_if(encryption,char,index)
       if @alphabet.include?(char)
-        encryption[index] = @alphabet[@c_array.index(char)]
+        encryption[index] = @alphabet[@shifts.c_array.index(char)]
       end
     end
 
@@ -64,7 +64,7 @@ module LetterShiftBack
 
     def d_back_alpha_if(encryption,char,index)
       if @alphabet.include?(char)
-        encryption[index] = @alphabet[@d_array.index(char)]
+        encryption[index] = @alphabet[@shifts.d_array.index(char)]
       end
     end
 

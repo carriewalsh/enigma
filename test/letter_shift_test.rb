@@ -11,27 +11,22 @@ class LetterShiftTest < MiniTest::Test
   end
 
   def test_a_chars_are_rotated
-    skip
     assert_equal "uucki", @enigma.shift_a("ducks")
   end
 
   def test_b_chars_are_rotated
-    skip
     assert_equal "drcks", @enigma.shift_b("ducks")
   end
 
   def test_c_chars_are_rotated
-    skip
     assert_equal "dulks", @enigma.shift_c("ducks")
   end
 
   def test_d_chars_are_rotated
-    skip
     assert_equal "duccs", @enigma.shift_d("ducks")
   end
 
   def test_all_chars_are_rotated
-    skip
 
     assert_equal "urlci", @enigma.shift_all("ducks")
   end

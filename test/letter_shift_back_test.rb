@@ -11,27 +11,22 @@ class LetterShiftBackTest < MiniTest::Test
   end
 
   def test_a_encrypted_letters_rotated_back
-    skip
     assert_equal "ducks", @enigma.shift_back_a("uucki")
   end
 
   def test_b_encrypted_letters_rotated_back
-    skip
     assert_equal "ducks", @enigma.shift_back_b("drcks")
   end
 
   def test_c_encrypted_letters_rotated_back
-    skip
     assert_equal "ducks", @enigma.shift_back_c("dulks")
   end
 
   def test_d_encrypted_letters_rotated_back
-    skip
     assert_equal "ducks", @enigma.shift_back_d("duccs")
   end
 
   def test_all_chars_are_rotated_back
-    skip
     assert_equal "ducks", @enigma.shift_all_back("urlci")
   end
 end

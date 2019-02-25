@@ -9,21 +9,14 @@ class Enigma
   include Decrypter
 
   attr_reader :shifts,
-              :alphabet,
-              :a_array,
-              :b_array,
-              :c_array,
-              :d_array
+              :alphabet
+
 
   attr_writer :message #only for test...
 
   def initialize
     @shifts = Shifts.new
     @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    @a_array = []
-    @b_array = []
-    @c_array = []
-    @d_array = []
   end
 
   def char_index(message)

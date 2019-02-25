@@ -12,7 +12,7 @@ module LetterShift
 
   def a_alpha_if(message,char,index)
     if char != nil
-      message[index] = @a_array[char]
+      message[index] = @shifts.a_array[char]
     end
   end
 
@@ -29,7 +29,7 @@ module LetterShift
 
   def b_alpha_if(message,char,index)
     if char != nil
-      message[index] = @b_array[char]
+      message[index] = @shifts.b_array[char]
     end
   end
 
@@ -46,7 +46,7 @@ module LetterShift
 
   def c_alpha_if(message,char,index)
     if char != nil
-      message[index] = @c_array[char]
+      message[index] = @shifts.c_array[char]
     end
   end
 
@@ -63,7 +63,7 @@ module LetterShift
 
   def d_alpha_if(message,char,index)
     if char != nil
-      message[index] = @d_array[char]
+      message[index] = @shifts.d_array[char]
     end
   end
 

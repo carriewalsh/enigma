@@ -7,7 +7,11 @@ class Shifts
 
   attr_reader :keys,
               :offsets,
-              :shifts
+              :shifts,
+              :a_array,
+              :b_array,
+              :c_array,
+              :d_array
 
   def initialize
     @keys = {a: nil,
@@ -23,6 +27,10 @@ class Shifts
             c: nil,
             d: nil}
     @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+    @a_array = []
+    @b_array = []
+    @c_array = []
+    @d_array = []
   end
 
   def create_shifts
