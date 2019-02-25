@@ -23,22 +23,22 @@ class WrongsTest < MiniTest::Test
   end
 
   def test_can_remove_first_numbers_that_return_false
-    @enigma.remove_first_wrongs
+    @enigma.remove_first_wrongs_forward
     assert_equal ["06","33"], @enigma.options_hash[:first]
   end
 
   def test_can_remove_second_numbers_that_return_false
-    @enigma.remove_second_wrongs
+    @enigma.remove_second_wrongs_forward
     assert_equal ["39"], @enigma.options_hash[:second]
   end
 
   def test_can_remove_third_numbers_that_return_false
-    @enigma.remove_third_wrongs
+    @enigma.remove_third_wrongs_forward
     assert_equal ["97"], @enigma.options_hash[:third]
   end
 
   def test_can_remove_fourth_numbers_that_dont_match
-    @enigma.remove_fourth_wrongs
+    @enigma.remove_fourth_wrongs_reverse
     assert_equal ["77"], @enigma.options_hash[:fourth]
   end
 end

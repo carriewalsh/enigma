@@ -76,7 +76,7 @@ class CrackerTest < MiniTest::Test
     @enigma.calculate_shifts
     @enigma.calculate_keys(230219)
     @enigma.all_option_arrays
-    actual = @enigma.check_fourth_digit(@enigma.options_hash[:fourth][2],@enigma.options_hash[:third])
+    actual = @enigma.check_digit_reverse(@enigma.options_hash[:fourth][2],@enigma.options_hash[:third])
     assert_equal true, actual
   end
 

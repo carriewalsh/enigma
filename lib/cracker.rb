@@ -62,16 +62,14 @@ module Cracker
     array.any? {|tens_num| tens_num[0] == ones_num[1]}
   end
 
-  def check_fourth_digit(tens_num,array)
+  def check_digit_reverse(tens_num,array)
     array.any? {|ones_num| tens_num[0] == ones_num[1]}
   end
 
   def find_key
-    remove_fourth_wrongs
-    remove_third_wrongs
-    remove_second_wrongs
-    remove_first_wrongs
-    # remove_invalid_numbers
+    remove_invalid_numbers
+    remove_wrongs_forward
+    remove_wrongs_reverse
     @key = (@options_hash[:first].first + @options_hash[:third].first + @options_hash[:fourth].first[1]).to_i
   end
 
