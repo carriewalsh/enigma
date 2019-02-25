@@ -1,10 +1,12 @@
 require "./lib/shifts"
 require "./lib/letter_shift"
 require "./lib/letter_shift_back"
+require "./lib/decrypter"
 
 class Enigma
   include LetterShift
   include LetterShiftBack
+  include Decrypter
 
   attr_reader :shifts,
               :alphabet,
@@ -54,18 +56,5 @@ class Enigma
     create_shifted_arrays(key,offset)
     shift_all(message)
     encrypt_hash(message,key,offset)
-  end
-
-  def decrypt_hash(decryption,key,offset)
-    {decryption: decryption,
-    key: key,
-    date: offset}
-  end
-
-  def decrypt(encryption,key,offset)
-    @shifts.create_hashes(key,offset)
-    create_shifted_arrays(key,offset)
-    shift_all_back(encryption)
-    decrypt_hash(encryption,key,offset)
   end
 end

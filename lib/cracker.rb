@@ -88,6 +88,7 @@ class Cracker
     calculate_keys(date)
     all_option_arrays
     find_key
+    
   end
 
 end
