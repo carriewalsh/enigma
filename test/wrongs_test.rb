@@ -14,6 +14,7 @@ class WrongsTest < MiniTest::Test
   end
 
   def test_can_remove_invalid_numbers
+    @enigma.remove_invalid_numbers
     expected = {:first=>["06", "33", "60", "87"],
                 :second=>["12", "39", "66", "93"],
                 :third=>["16", "43", "70", "97"],

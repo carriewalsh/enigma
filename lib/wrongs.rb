@@ -1,4 +1,11 @@
 module Wrongs
+
+  def remove_invalid_numbers
+    @options_hash.each do |letter,array|
+      @options_hash[letter] = array.find_all {|option| option.length == 2}
+    end
+  end
+
   def remove_first_wrongs
     num = @options_hash[:first]
     [3,2,1,0].each do |number|
