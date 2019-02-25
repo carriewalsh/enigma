@@ -10,7 +10,7 @@ class Crack
 
 
   writer = File.open(ARGV[1],"w")
-  cracked = encrypted.crack(date)
+  cracked = encrypted.crack(encrypted,date)
   #my guess is this will take the date as an argument?
 
   writer.write(cracked)

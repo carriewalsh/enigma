@@ -3,12 +3,14 @@ require "./lib/letter_shift"
 require "./lib/letter_shift_back"
 require "./lib/encrypter"
 require "./lib/decrypter"
+require "./lib/crack_module"
 
 class Enigma
   include LetterShift
   include LetterShiftBack
   include Encrypter
   include Decrypter
+  include CrackModule
 
   attr_reader :shifts,
               :alphabet
