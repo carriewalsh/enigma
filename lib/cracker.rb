@@ -1,9 +1,11 @@
 require "./lib/shifts"
 require "./lib/wrongs"
+require "./lib/letter_shift_back"
 require "./lib/decrypter"
 
 class Cracker
   include Wrongs
+  include LetterShiftBack
   include Decrypter
 
   attr_reader :key,

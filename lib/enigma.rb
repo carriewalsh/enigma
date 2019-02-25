@@ -39,7 +39,7 @@ class Enigma
   def encrypt(message,key,offset)
     message.downcase!
     @shifts.create_hashes(key,offset) #could this go in create_shifted_arrays?
-    create_shifted_arrays(key,offset)
+    @shifts.create_shifted_arrays(key,offset)
     shift_all(message)
     encrypt_hash(message,key,offset)
   end

@@ -101,6 +101,7 @@ class CrackerTest < MiniTest::Test
   end
 
   def test_cracker_finds_decrypted_message
+    skip
     assert_equal "olive you end", @cracker.crack("afdsrutlgu kq","230219")
   end
 
