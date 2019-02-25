@@ -92,6 +92,22 @@ class Cracker
     end
   end
 
+  def remove_second_wrongs
+    [3,2,1,0].each do |number|
+      if check_digit(@options_hash[:second][number],@options_hash[:third]) == false
+        @options_hash[:second].delete_at(number)
+      end
+    end
+  end
+
+  def remove_third_wrongs
+    [3,2,1,0].each do |number|
+      if check_digit(@options_hash[:third][number],@options_hash[:fourth]) == false
+        @options_hash[:third].delete_at(number)
+      end
+    end
+  end
+
   def find_key
     all_option_arrays
   end
