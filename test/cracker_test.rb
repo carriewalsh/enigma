@@ -91,6 +91,11 @@ class CrackerTest < MiniTest::Test
     assert_equal true, actual_2
   end
 
+  def test_can_remove_numbers_that_return_false
+    @cracker.remove_wrong(@cracker.options_hash[:first],@cracker.options_hash[:second])
+    assert_equal ["33", "60", "87"], @cracker.options_hash[:first]
+  end
+
   def test_cracker_finds_key_for_encrypted_message
     @cracker.find_letter_align("afdsrutlgu kq")
     @cracker.calculate_shifts
