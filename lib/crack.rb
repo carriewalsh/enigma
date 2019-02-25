@@ -1,19 +1,21 @@
+require "./lib/enigma"
+
 class Crack
-  #include unedecided module(s)
+
+  enigma = Enigma.new
 
   reader = File.open(ARGV[0],"r")
   encrypted = reader.read
-
   reader.close
 
-  date = ARGV[2] #is this right?
+  date = ARGV[2]
 
 
   writer = File.open(ARGV[1],"w")
-  cracked = encrypted.crack(date)
-  #my guess is this will take the date as an argument?
+  cracked = enigma.crack(encrypted,date)
 
-  writer.write(cracked)
+  writer.write(cracked[:decryption])
   writer.close
 
+  puts "Created #{ARGV[0]} with the cracked key #{cracked[:key]} and date #{ARGV[2]}"
 end

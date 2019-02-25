@@ -39,5 +39,5 @@ class OffsetsTest < MiniTest::Test
       c: 2,
       d: 1}
       assert_equal expected, @shifts.offsets
-    end
+  end
 end

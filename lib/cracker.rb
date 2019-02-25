@@ -2,26 +2,12 @@ require "./lib/shifts"
 require "./lib/wrongs"
 require "./lib/letter_shift_back"
 require "./lib/decrypter"
+require "pry"
 
-class Cracker
+module Cracker
   include Wrongs
   include LetterShiftBack
   include Decrypter
-
-  attr_reader :key,
-              :shifts,
-              :letter_align,
-              :options_hash
-  def initialize
-    @key = nil
-    @shifts = Shifts.new
-    @letter_align = {a: nil, b: nil, c: nil, d: nil}
-    @options_hash = {first:[],
-                    second:[],
-                    third:[],
-                    fourth:[]}
-    @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-  end
 
   def count_chars(message)
     message.length
@@ -40,15 +26,16 @@ class Cracker
   end
 
   def calculate_shifts
-    @letter_align.each do |key,letter_pair|
+    @letter_align.each do |letter,letter_pair|
       diff = @alphabet.index(letter_pair[1]) - @alphabet.index(letter_pair[0])
-      diff > 0 ? @shifts.shifts[key] = diff : @shifts.shifts[key] = 27 + diff
+      diff > 0 ? @shifts.shifts[letter] = diff : @shifts.shifts[letter] = 27 + diff
     end
   end
 
   def calculate_keys(date)
     @shifts.offset_integrated(date)
     @shifts.offsets.each do |letter,offset|
+      # @shifts.offsets[letter] < @shifts.shifts[letter] ? @shifts.shifts[letter] + 27 : @shifts.shifts[letter] + 0
       @shifts.keys[letter] = @shifts.shifts[letter] - @shifts.offsets[letter]
     end
     @shifts.keys.each do |letter,key|
@@ -57,7 +44,8 @@ class Cracker
   end
 
   def options_array(key,ordinal)
-    @options_hash[ordinal] << key
+    key.to_i < 0 ? key = key.to_i + 27 : key
+    @options_hash[ordinal] << key.to_s
     @options_hash[ordinal] << (key.to_i + 27).to_s
     @options_hash[ordinal] << (key.to_i + 54).to_s
     @options_hash[ordinal] << (key.to_i + 81).to_s
@@ -74,11 +62,14 @@ class Cracker
     array.any? {|tens_num| tens_num[0] == ones_num[1]}
   end
 
+  def check_digit_reverse(tens_num,array)
+    array.any? {|ones_num| tens_num[0] == ones_num[1]}
+  end
+
   def find_key
-    remove_fourth_wrongs
-    remove_third_wrongs
-    remove_second_wrongs
-    remove_first_wrongs
+    remove_invalid_numbers
+    remove_wrongs_forward
+    remove_wrongs_reverse
     @key = (@options_hash[:first].first + @options_hash[:third].first + @options_hash[:fourth].first[1]).to_i
   end
 
@@ -88,8 +79,6 @@ class Cracker
     calculate_keys(date)
     all_option_arrays
     find_key
-    decrypt(encryption,@key,hash)
-    binding.pry
+    decrypt(encryption,@key.to_s,date)
   end
-
 end
