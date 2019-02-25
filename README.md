@@ -19,6 +19,17 @@ To view the encrypted message, open `encrypted.txt`.
 
 ## To Decrypt an Encrypted Message
 In the Command Line, type:
-`ruby ./lib/decrypt.rb encrypted.txt 12345 032489`
+`ruby ./lib/decrypt.rb encrypted.txt *key* *date*`
 
 To view the decrypted message, open `decrypted.txt`
+
+## To Crack an Encrypted Message
+This is for super secret messages.
+Write a message in `message.txt` that ends with " end" and encrypt it.
+
+To crack it, you just need the date used to encrypt it.
+
+Then, in the Command Line, type:
+`ruby ./lib/crack.rb encrypted.txt cracked.txt *date*`
+
+To view the cracked message, open `cracked.txt`
