@@ -65,11 +65,18 @@ module Cracker
     array.any? {|ones_num| tens_num[0] == ones_num[1]}
   end
 
-  def find_key #fix this
+  def find_key
     remove_invalid_numbers
     remove_wrongs_forward
     remove_wrongs_reverse
-    @key = (@options_hash[:first].first + @options_hash[:third].first + @options_hash[:fourth].first[1]).to_i
+  end
+
+  def print_key
+    first = @options_hash[:first].first
+    second = @options_hash[:second].find {|number| number[0] == first[1]}
+    third = @options_hash[:third].find {|number| number[0] == second[1]}
+    fourth = @options_hash[:fourth].find {|number| number[0] == third[1]}
+    @key = @options_hash[:first].first + third + fourth[1]
   end
 
   def crack(encryption,date)
@@ -78,6 +85,7 @@ module Cracker
     calculate_keys(date)
     all_option_arrays
     find_key
+    print_key
     decrypt(encryption,@key.to_s,date)
   end
 end
