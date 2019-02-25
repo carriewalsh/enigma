@@ -7,7 +7,6 @@ class EncrypterTest < MiniTest::Test
     @enigma.shifts.offset_integrated("032489")
     @enigma.shifts.create_shifts
     @enigma.shifts.create_shifted_arrays(12345,"032489")
-    @enigma.message = "ducks" #makes it so we need attr_writer
   end
 
   def test_encrypt_hash_method_returns_hash
@@ -40,11 +39,6 @@ class EncrypterTest < MiniTest::Test
                 key: "12345",
                 date: "032489"}
     assert_equal expected, @enigma.encrypt("ducks2", "12345", "032489")
-  end
-
-  def test_key_not_given_creates_random_number_encrypted_message
-    skip
-    assert_equal expected, @enigma.encrypt("ducks", "12345", "032489")
   end
 
 end

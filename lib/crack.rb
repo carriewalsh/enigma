@@ -1,7 +1,6 @@
 require "./lib/enigma"
 
 class Crack
-
   enigma = Enigma.new
 
   reader = File.open(ARGV[0],"r")
@@ -17,5 +16,5 @@ class Crack
   writer.write(cracked[:decryption])
   writer.close
 
-  puts "Created #{ARGV[0]} with the cracked key #{cracked[:key]} and date #{ARGV[2]}"
+  puts "Created #{ARGV[0]} with the cracked key #{cracked[:key].to_s.rjust(5,"0")} and date #{ARGV[2]}"
 end

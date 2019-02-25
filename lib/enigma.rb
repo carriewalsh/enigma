@@ -18,18 +18,12 @@ class Enigma
               :options_hash,
               :alphabet
 
-
-  attr_writer :message #only for test...
-
   def initialize
     @key = nil
     @shifts = Shifts.new
-    @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+    @alphabet = ("a".."z").to_a << " "
     @letter_align = {a: nil, b: nil, c: nil, d: nil}
-    @options_hash = {first:[],
-                    second:[],
-                    third:[],
-                    fourth:[]}
+    @options_hash = {first:[], second:[], third:[], fourth:[]}
   end
 
   def char_index(message)

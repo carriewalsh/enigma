@@ -2,8 +2,6 @@ require "./lib/enigma"
 require "pry"
 
 class Decrypt
-  #include undecided module(s)
-
   enigma = Enigma.new
 
   reader = File.open(ARGV[0],"r")
@@ -20,5 +18,4 @@ class Decrypt
   writer.close
 
   puts "Created #{ARGV[1]} with the key #{ARGV[2]} and date #{ARGV[3]}"
-
 end

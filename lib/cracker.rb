@@ -28,14 +28,13 @@ module Cracker
   def calculate_shifts
     @letter_align.each do |letter,letter_pair|
       diff = @alphabet.index(letter_pair[1]) - @alphabet.index(letter_pair[0])
-      diff > 0 ? @shifts.shifts[letter] = diff : @shifts.shifts[letter] = 27 + diff
+      diff>0 ? @shifts.shifts[letter]=diff : @shifts.shifts[letter] = 27+diff
     end
   end
 
   def calculate_keys(date)
     @shifts.offset_integrated(date)
     @shifts.offsets.each do |letter,offset|
-      # @shifts.offsets[letter] < @shifts.shifts[letter] ? @shifts.shifts[letter] + 27 : @shifts.shifts[letter] + 0
       @shifts.keys[letter] = @shifts.shifts[letter] - @shifts.offsets[letter]
     end
     @shifts.keys.each do |letter,key|
@@ -66,7 +65,7 @@ module Cracker
     array.any? {|ones_num| tens_num[0] == ones_num[1]}
   end
 
-  def find_key
+  def find_key #fix this
     remove_invalid_numbers
     remove_wrongs_forward
     remove_wrongs_reverse
