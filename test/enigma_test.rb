@@ -87,20 +87,4 @@ class EnigmaTest < MiniTest::Test
     skip
     assert_equal expected, @enigma.encrypt("ducks", "12345", "032489")
   end
-
-  def test_decrypt_hash_method_returns_hash
-    skip
-    expected = {decryption: "message",
-                key: "12345",
-                date: "032489"}
-    assert_equal expected, @enigma.decrypt_hash("message","12345","032489")
-  end
-
-  def test_decrypt_method_decodes_message
-    skip
-    expected = {decryption: "ducks",
-                key: "12345",
-                date: "032489"}
-    assert_equal expected, @enigma.decrypt("urlci","12345","032489")
-  end
 end

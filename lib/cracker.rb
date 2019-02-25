@@ -12,22 +12,10 @@ class Cracker
               :options_hash
   def initialize
     @key = nil
-    @shifts = {a: nil,
-                b: nil,
-                c: nil,
-                d: nil}
-    @offsets = {a: nil,
-                b: nil,
-                c: nil,
-                d: nil}
-    @keys = {a: nil,
-                b: nil,
-                c: nil,
-                d: nil}
-    @letter_align = {a: nil,
-                b: nil,
-                c: nil,
-                d: nil}
+    @shifts = {a: nil, b: nil, c: nil, d: nil}
+    @offsets = {a: nil, b: nil, c: nil, d: nil}
+    @keys = {a: nil, b: nil, c: nil, d: nil}
+    @letter_align = {a: nil, b: nil, c: nil, d: nil}
     @options_hash = {first:[],
                     second:[],
                     third:[],
@@ -92,6 +80,14 @@ class Cracker
     remove_second_wrongs
     remove_first_wrongs
     @key = (@options_hash[:first].first + @options_hash[:third].first + @options_hash[:fourth].first[1]).to_i
+  end
+
+  def crack(encryption,date)
+    find_letter_align(encryption)
+    calculate_shifts
+    calculate_keys(date)
+    all_option_arrays
+    find_key
   end
 
 end
