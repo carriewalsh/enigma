@@ -1,20 +1,18 @@
-require "./lib/offsets"
+require "./lib/shifts"
 require "./lib/wrongs"
+require "./lib/decrypter"
 
 class Cracker
-  include Offsets
   include Wrongs
+  include Decrypter
+
   attr_reader :key,
               :shifts,
-              :offsets,
-              :keys,
               :letter_align,
               :options_hash
   def initialize
     @key = nil
-    @shifts = {a: nil, b: nil, c: nil, d: nil}
-    @offsets = {a: nil, b: nil, c: nil, d: nil}
-    @keys = {a: nil, b: nil, c: nil, d: nil}
+    @shifts = Shifts.new
     @letter_align = {a: nil, b: nil, c: nil, d: nil}
     @options_hash = {first:[],
                     second:[],
@@ -42,17 +40,17 @@ class Cracker
   def calculate_shifts
     @letter_align.each do |key,letter_pair|
       diff = @alphabet.index(letter_pair[1]) - @alphabet.index(letter_pair[0])
-      diff > 0 ? @shifts[key] = diff : @shifts[key] = 27 + diff
+      diff > 0 ? @shifts.shifts[key] = diff : @shifts.shifts[key] = 27 + diff
     end
   end
 
   def calculate_keys(date)
-    offset_integrated(date)
-    @offsets.each do |letter,offset|
-      @keys[letter] = @shifts[letter] - @offsets[letter]
+    @shifts.offset_integrated(date)
+    @shifts.offsets.each do |letter,offset|
+      @shifts.keys[letter] = @shifts.shifts[letter] - @shifts.offsets[letter]
     end
-    @keys.each do |letter,key|
-      @keys[letter] = key.to_s.rjust(2,"0")
+    @shifts.keys.each do |letter,key|
+      @shifts.keys[letter] = key.to_s.rjust(2,"0")
     end
   end
 
@@ -64,10 +62,10 @@ class Cracker
   end
 
   def all_option_arrays
-    options_array(@keys[:a],:first)
-    options_array(@keys[:b],:second)
-    options_array(@keys[:c],:third)
-    options_array(@keys[:d],:fourth)
+    options_array(@shifts.keys[:a],:first)
+    options_array(@shifts.keys[:b],:second)
+    options_array(@shifts.keys[:c],:third)
+    options_array(@shifts.keys[:d],:fourth)
   end
 
   def check_digit(ones_num,array)
@@ -88,7 +86,8 @@ class Cracker
     calculate_keys(date)
     all_option_arrays
     find_key
-    
+    decrypt(encryption,@key,hash)
+    binding.pry
   end
 
 end

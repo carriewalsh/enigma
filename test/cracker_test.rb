@@ -18,7 +18,7 @@ class CrackerTest < MiniTest::Test
                 b: nil,
                 c: nil,
                 d: nil}
-    assert_equal expected, @cracker.shifts
+    assert_equal expected, @cracker.shifts.shifts
   end
 
   def test_cracker_starts_with_empty_letter_align_hash
@@ -54,7 +54,7 @@ class CrackerTest < MiniTest::Test
                 b: 21,
                 c: 22,
                 d: 24}
-    assert_equal expected, @cracker.shifts
+    assert_equal expected, @cracker.shifts.shifts
   end
 
   def test_keys_can_be_calculated_based_on_date
@@ -65,7 +65,7 @@ class CrackerTest < MiniTest::Test
                 c: "16",
                 d: "23"}
     @cracker.calculate_keys(230219)
-    assert_equal expected, @cracker.keys
+    assert_equal expected, @cracker.shifts.keys
   end
 
   def test_key_options_can_be_found
@@ -101,7 +101,6 @@ class CrackerTest < MiniTest::Test
   end
 
   def test_cracker_finds_decrypted_message
-    skip
     assert_equal "olive you end", @cracker.crack("afdsrutlgu kq","230219")
   end
 

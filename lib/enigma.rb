@@ -26,20 +26,6 @@ class Enigma
     @d_array = []
   end
 
-  def create_shifted_arrays(key,offset)
-    while key == nil && offset == nil
-      # key = @shifts.random_key
-      # offset = @shifts.today_offset
-    end
-    @a_array = @alphabet.rotate(@shifts.shifts[:a])
-    @b_array = @alphabet.rotate(@shifts.shifts[:b])
-    @c_array = @alphabet.rotate(@shifts.shifts[:c])
-    @d_array = @alphabet.rotate(@shifts.shifts[:d])
-     #could use a while loop here
-    # if @offset = nil
-    # end
-  end
-
   def char_index(message)
     message.chars.map {|char| @alphabet.index(char)}
   end
