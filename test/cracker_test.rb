@@ -126,6 +126,7 @@ class CrackerTest < MiniTest::Test
     @cracker.remove_fourth_wrongs
     assert_equal ["77"], @cracker.options_hash[:fourth]
   end
+  
   def test_cracker_finds_key_for_encrypted_message
     @cracker.find_letter_align("afdsrutlgu kq")
     @cracker.calculate_shifts

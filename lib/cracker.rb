@@ -110,10 +110,20 @@ class Cracker
     end
   end
 
+  def remove_fourth_wrongs
+    [3,2,1,0].each do |number|
+      if check_digit(@options_hash[:fourth][number].reverse,@options_hash[:third].reverse) == false
+        @options_hash[:fourth].delete_at(number)
+      end
+    end
+  end
+
   def find_key
+    remove_fourth_wrongs
     remove_third_wrongs
     remove_second_wrongs
     remove_first_wrongs
+    @key = (@options_hash[:first].first + @options_hash[:third].first + @options_hash[:fourth].first[1]).to_i
   end
 
 end
