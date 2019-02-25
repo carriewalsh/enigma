@@ -2,42 +2,46 @@ require './test/test_helper'
 
 class WrongsTest < MiniTest::Test
   def setup
-    @cracker = Cracker.new
+    @enigma = Enigma.new
+    @enigma.shifts.create_keys(12345)
+    @enigma.shifts.offset_integrated("032489")
+    @enigma.shifts.create_shifts
+    @enigma.shifts.create_shifted_arrays(12345,"032489")
   end
-  
+
   def test_can_remove_first_numbers_that_return_false
-    @cracker.find_letter_align("afdsrutlgu kq")
-    @cracker.calculate_shifts
-    @cracker.calculate_keys(230219)
-    @cracker.all_option_arrays
-    @cracker.remove_first_wrongs
-    assert_equal ["06","33"], @cracker.options_hash[:first]
+    @enigma.find_letter_align("afdsrutlgu kq")
+    @enigma.calculate_shifts
+    @enigma.calculate_keys(230219)
+    @enigma.all_option_arrays
+    @enigma.remove_first_wrongs
+    assert_equal ["06","33"], @enigma.options_hash[:first]
   end
 
   def test_can_remove_second_numbers_that_return_false
-    @cracker.find_letter_align("afdsrutlgu kq")
-    @cracker.calculate_shifts
-    @cracker.calculate_keys(230219)
-    @cracker.all_option_arrays
-    @cracker.remove_second_wrongs
-    assert_equal ["39"], @cracker.options_hash[:second]
+    @enigma.find_letter_align("afdsrutlgu kq")
+    @enigma.calculate_shifts
+    @enigma.calculate_keys(230219)
+    @enigma.all_option_arrays
+    @enigma.remove_second_wrongs
+    assert_equal ["39"], @enigma.options_hash[:second]
   end
 
   def test_can_remove_third_numbers_that_return_false
-    @cracker.find_letter_align("afdsrutlgu kq")
-    @cracker.calculate_shifts
-    @cracker.calculate_keys(230219)
-    @cracker.all_option_arrays
-    @cracker.remove_third_wrongs
-    assert_equal ["97"], @cracker.options_hash[:third]
+    @enigma.find_letter_align("afdsrutlgu kq")
+    @enigma.calculate_shifts
+    @enigma.calculate_keys(230219)
+    @enigma.all_option_arrays
+    @enigma.remove_third_wrongs
+    assert_equal ["97"], @enigma.options_hash[:third]
   end
 
   def test_can_remove_fourth_numbers_that_dont_match
-    @cracker.find_letter_align("afdsrutlgu kq")
-    @cracker.calculate_shifts
-    @cracker.calculate_keys(230219)
-    @cracker.all_option_arrays
-    @cracker.remove_fourth_wrongs
-    assert_equal ["77"], @cracker.options_hash[:fourth]
+    @enigma.find_letter_align("afdsrutlgu kq")
+    @enigma.calculate_shifts
+    @enigma.calculate_keys(230219)
+    @enigma.all_option_arrays
+    @enigma.remove_fourth_wrongs
+    assert_equal ["77"], @enigma.options_hash[:fourth]
   end
 end

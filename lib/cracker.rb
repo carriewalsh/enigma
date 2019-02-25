@@ -4,26 +4,11 @@ require "./lib/letter_shift_back"
 require "./lib/decrypter"
 require "./lib/crack_module"
 
-class Cracker
+module Cracker
   include Wrongs
   include LetterShiftBack
   include Decrypter
   include CrackModule
-
-  attr_reader :key,
-              :shifts,
-              :letter_align,
-              :options_hash
-  def initialize
-    @key = nil
-    @shifts = Shifts.new
-    @letter_align = {a: nil, b: nil, c: nil, d: nil}
-    @options_hash = {first:[],
-                    second:[],
-                    third:[],
-                    fourth:[]}
-    @alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-  end
 
   def count_chars(message)
     message.length
@@ -74,5 +59,22 @@ class Cracker
 
   def check_digit(ones_num,array)
     array.any? {|tens_num| tens_num[0] == ones_num[1]}
+  end
+
+  def find_key
+    remove_fourth_wrongs
+    remove_third_wrongs
+    remove_second_wrongs
+    remove_first_wrongs
+    @key = (@options_hash[:first].first + @options_hash[:third].first + @options_hash[:fourth].first[1]).to_i
+  end
+
+  def crack(encryption,date)
+    find_letter_align(encryption)
+    calculate_shifts
+    calculate_keys(date)
+    all_option_arrays
+    find_key
+    decrypt(encryption,@key.to_s,date)
   end
 end
