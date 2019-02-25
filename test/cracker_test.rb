@@ -122,11 +122,23 @@ class CrackerTest < MiniTest::Test
     @cracker.find_letter_align("afdsrutlgu kq")
     @cracker.calculate_shifts
     @cracker.calculate_keys(230219)
+    @cracker.all_option_arrays
+    @cracker.remove_first_wrongs
+    @cracker.remove_second_wrongs
+    @cracker.remove_third_wrongs
     @cracker.find_key
     assert_equal 33977, @cracker.key
   end
 
   def test_cracker_finds_decrypted_message
+    @cracker.find_letter_align("afdsrutlgu kq")
+    @cracker.calculate_shifts
+    @cracker.calculate_keys(230219)
+    @cracker.all_option_arrays
+    @cracker.remove_first_wrongs
+    @cracker.remove_second_wrongs
+    @cracker.remove_third_wrongs
+    @cracker.find_key
     assert_equal "olive you end", @cracker.crack("afdsrutlgu kq","230219")
   end
 
