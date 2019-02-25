@@ -86,8 +86,7 @@ class CrackerTest < MiniTest::Test
     @enigma.calculate_keys(230219)
     @enigma.all_option_arrays
     @enigma.find_key
-    @enigma.print_key
-    assert_equal "33977", @enigma.key
+    assert_equal "33977", @enigma.print_key
   end
 
   def test_cracker_finds_decrypted_message

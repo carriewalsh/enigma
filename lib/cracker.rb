@@ -72,6 +72,14 @@ module Cracker
     @key = (@options_hash[:first].first + @options_hash[:third].first + @options_hash[:fourth].first[1]).to_i
   end
 
+  def print_key
+    first = @options_hash[:first].first
+    second = @options_hash[:second].find {|number| number[0] == first[1]}
+    third = @options_hash[:third].find {|number| number[0] == second[1]}
+    fourth = @options_hash[:fourth].find {|number| number[0] == third[1]}
+    @key = @options_hash[:first].first + third + fourth[0]
+  end
+
   def crack(encryption,date)
     find_letter_align(encryption)
     calculate_shifts
