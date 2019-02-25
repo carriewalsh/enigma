@@ -71,6 +71,15 @@ class CrackerTest < MiniTest::Test
     assert_equal false, actual_2
   end
 
+  def test_can_compare_fourth_numbers_to_array
+    @enigma.find_letter_align("afdsrutlgu kq")
+    @enigma.calculate_shifts
+    @enigma.calculate_keys(230219)
+    @enigma.all_option_arrays
+    actual = @enigma.check_fourth_digit(@enigma.options_hash[:fourth][2],@enigma.options_hash[:third])
+    assert_equal true, actual
+  end
+
   def test_cracker_finds_key_for_encrypted_message
     @enigma.find_letter_align("afdsrutlgu kq")
     @enigma.calculate_shifts

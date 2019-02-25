@@ -2,6 +2,7 @@ require "./lib/shifts"
 require "./lib/wrongs"
 require "./lib/letter_shift_back"
 require "./lib/decrypter"
+require "pry"
 
 module Cracker
   include Wrongs
@@ -59,6 +60,10 @@ module Cracker
     array.any? {|tens_num| tens_num[0] == ones_num[1]}
   end
 
+  def check_fourth_digit(tens_num,array)
+    array.any? {|ones_num| tens_num[0] == ones_num[1]}
+  end
+
   def find_key
     remove_fourth_wrongs
     remove_third_wrongs
@@ -72,6 +77,7 @@ module Cracker
     calculate_shifts
     calculate_keys(date)
     all_option_arrays
+    # binding.pry
     find_key
     decrypt(encryption,@key.to_s,date)
   end
