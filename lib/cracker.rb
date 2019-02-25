@@ -88,8 +88,7 @@ class Cracker
     calculate_keys(date)
     all_option_arrays
     find_key
-    decrypt(encryption,@key,hash)
-    binding.pry
+    decrypt(encryption,@key.to_s,date)
   end
 
 end
