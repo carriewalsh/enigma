@@ -16,7 +16,8 @@ class Crack
   cracked = enigma.crack(encrypted,date)
   #my guess is this will take the date as an argument?
 
-  writer.write(cracked)
+  writer.write(cracked[:decryption])
   writer.close
 
+  puts "Created #{ARGV[0]} with the cracked key #{cracked[:key]} and date #{ARGV[2]}"
 end

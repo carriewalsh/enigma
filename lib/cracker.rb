@@ -2,13 +2,11 @@ require "./lib/shifts"
 require "./lib/wrongs"
 require "./lib/letter_shift_back"
 require "./lib/decrypter"
-require "./lib/crack_module"
 
 module Cracker
   include Wrongs
   include LetterShiftBack
   include Decrypter
-  include CrackModule
 
   def count_chars(message)
     message.length
