@@ -1,73 +1,24 @@
 module LetterShift
-  def shift_a(message)
-    count = 0
+  def char_in_alphabet(message,char,index,array)
+    if char != nil
+      message[index] = array[char]
+    end
+  end
+
+  def shift_forward(count, message, array)
     char_index(message).each_with_index do |char,index|
       if index == count
-        a_alpha_if(message,char,index)
+        char_in_alphabet(message,char,index,array)
         count += 4
       end
-    end
-  end
-
-  def a_alpha_if(message,char,index)
-    if char != nil
-      message[index] = @shifts.a_array[char]
-    end
-  end
-
-  def shift_b(message)
-    count = 1
-    char_index(message).each_with_index do |char,index|
-      if index == count
-        b_alpha_if(message,char,index)
-        count += 4
-      end
-    end
-  end
-
-  def b_alpha_if(message,char,index)
-    if char != nil
-      message[index] = @shifts.b_array[char]
-    end
-  end
-
-  def shift_c(message)
-    count = 2
-    char_index(message).each_with_index do |char,index|
-      if index == count
-        c_alpha_if(message,char,index)
-        count += 4
-      end
-    end
-  end
-
-  def c_alpha_if(message,char,index)
-    if char != nil
-      message[index] = @shifts.c_array[char]
-    end
-  end
-
-  def shift_d(message)
-    count = 3
-    char_index(message).each_with_index do |char,index|
-      if index == count
-        d_alpha_if(message,char,index)
-        count += 4
-      end
-    end
-  end
-
-  def d_alpha_if(message,char,index)
-    if char != nil
-      message[index] = @shifts.d_array[char]
     end
   end
 
   def shift_all(message)
-    shift_a(message)
-    shift_b(message)
-    shift_c(message)
-    shift_d(message)
+    shift_forward(0, message, @shifts.a_array)
+    shift_forward(1, message, @shifts.b_array)
+    shift_forward(2, message, @shifts.c_array)
+    shift_forward(3, message, @shifts.d_array)
     message
   end
 end
