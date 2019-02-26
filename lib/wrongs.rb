@@ -5,41 +5,31 @@ module Wrongs
     end
   end
 
-  def remove_forward(upper,lower)
-    num = @options_hash[upper]
+  def remove_wrongs(direction,iterated,array)
+    num = @options_hash[iterated]
     range = (0...num.length).to_a.reverse
     range.each do |number|
-      if check_digit(num[number],@options_hash[lower]) == false
-        @options_hash[upper].delete_at(number)
-      end
-    end
-  end
-
-  def remove_reverse(lower,upper)
-    num = @options_hash[lower]
-    range = (0...num.length).to_a.reverse
-    range.each do |number|
-      if check_digit_reverse(num[number],@options_hash[upper]) == false
-        @options_hash[lower].delete_at(number)
+      if check_digit(direction,num[number],@options_hash[array]) == false
+        @options_hash[iterated].delete_at(number)
       end
     end
   end
 
   def remove_wrongs_forward
-    remove_forward(:first,:second)
-    remove_forward(:second,:third)
-    remove_forward(:third,:fourth)
-    remove_reverse(:fourth,:third)
-    remove_reverse(:third,:second)
-    remove_reverse(:second,:first)
+    remove_wrongs("forward", :first,:second)
+    remove_wrongs("forward", :second,:third)
+    remove_wrongs("forward", :third,:fourth)
+    remove_wrongs("reverse", :fourth,:third)
+    remove_wrongs("reverse", :third,:second)
+    remove_wrongs("reverse", :second,:first)
   end
 
   def remove_wrongs_reverse
-    remove_reverse(:fourth,:third)
-    remove_reverse(:third,:second)
-    remove_reverse(:second,:first)
-    remove_forward(:third,:fourth)
-    remove_forward(:second,:third)
-    remove_forward(:first,:second)
+    remove_wrongs("reverse", :fourth,:third)
+    remove_wrongs("reverse", :third,:second)
+    remove_wrongs("reverse", :second,:first)
+    remove_wrongs("forward", :third,:fourth)
+    remove_wrongs("forward", :second,:third)
+    remove_wrongs("forward", :first,:second)
   end
 end

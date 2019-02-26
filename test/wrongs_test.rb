@@ -23,12 +23,12 @@ class WrongsTest < MiniTest::Test
   end
 
   def test_can_remove_numbers_that_return_false_forward
-    @enigma.remove_forward(:first,:second)
+    @enigma.remove_wrongs("forward", :first, :second)
     assert_equal ["06","33"], @enigma.options_hash[:first]
   end
 
   def test_can_remove_numbers_that_return_false_reverse
-    @enigma.remove_reverse(:second,:first)
+    @enigma.remove_wrongs("reverse", :second, :first)
     assert_equal ["39", "66"], @enigma.options_hash[:second]
   end
 end

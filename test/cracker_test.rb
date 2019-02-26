@@ -65,9 +65,9 @@ class CrackerTest < MiniTest::Test
     @enigma.calculate_shifts
     @enigma.calculate_keys("230219")
     @enigma.all_option_arrays
-    actual_1 = @enigma.check_digit(@enigma.options_hash[:first][0],@enigma.options_hash[:second])
+    actual_1 = @enigma.check_digit("forward",@enigma.options_hash[:first][0],@enigma.options_hash[:second])
     assert_equal true, actual_1
-    actual_2 = @enigma.check_digit(@enigma.options_hash[:first][2],@enigma.options_hash[:second])
+    actual_2 = @enigma.check_digit("forward",@enigma.options_hash[:first][2],@enigma.options_hash[:second])
     assert_equal false, actual_2
   end
 
@@ -76,7 +76,7 @@ class CrackerTest < MiniTest::Test
     @enigma.calculate_shifts
     @enigma.calculate_keys("230219")
     @enigma.all_option_arrays
-    actual = @enigma.check_digit_reverse(@enigma.options_hash[:fourth][2],@enigma.options_hash[:third])
+    actual = @enigma.check_digit("reverse", @enigma.options_hash[:fourth][2],@enigma.options_hash[:third])
     assert_equal true, actual
   end
 

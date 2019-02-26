@@ -55,12 +55,12 @@ module Cracker
     options_array(@shifts.keys[:d],:fourth)
   end
 
-  def check_digit(ones_num,array)
-    array.any? {|tens_num| tens_num[0] == ones_num[1]}
-  end
-
-  def check_digit_reverse(tens_num,array)
-    array.any? {|ones_num| tens_num[0] == ones_num[1]}
+  def check_digit(direction, number, array)
+    if direction == "forward"
+      array.any? {|tens_num| tens_num[0] == number[1]}
+    elsif direction == "reverse"
+      array.any? {|ones_num| number[0] == ones_num[1]}
+    end
   end
 
   def find_key
