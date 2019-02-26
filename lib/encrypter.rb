@@ -32,5 +32,4 @@ module Encrypter
     shift_all(message)
     encrypt_hash(message,key,offset)
   end
-
 end

@@ -1,11 +1,9 @@
 require "./lib/shifts"
 require "./lib/encrypter"
-require "./lib/decrypter"
 require "./lib/cracker"
 
 class Enigma
   include Encrypter
-  include Decrypter
   include Cracker
 
   attr_reader :key,
