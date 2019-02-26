@@ -5,17 +5,6 @@ class EncrypterTest < MiniTest::Test
     @enigma = Enigma.new
   end
 
-  def test_encrypt_hash_method_returns_hash
-    @enigma.shifts.create_keys(12345)
-    @enigma.shifts.offset_integrated("032489")
-    @enigma.shifts.create_shifts
-    @enigma.shifts.create_shifted_arrays(12345,"032489")
-    expected = {encryption: "message",
-                key: "12345",
-                date: "032489"}
-    assert_equal expected, @enigma.encrypt_hash("message","12345","032489")
-  end
-
   def test_encrypt_method_creates_encrypted_message
     @enigma.shifts.create_keys(12345)
     @enigma.shifts.offset_integrated("032489")
@@ -68,4 +57,15 @@ class EncrypterTest < MiniTest::Test
     assert_equal String, @enigma.key.class
     assert_equal String, @enigma.offset.class
   end
+
+  def test_encrypt_hash_method_returns_hash
+    @enigma.shifts.create_keys(12345)
+    @enigma.shifts.offset_integrated("032489")
+    @enigma.shifts.create_shifts
+    @enigma.shifts.create_shifted_arrays(12345,"032489")
+    expected = {encryption: "message",
+      key: "12345",
+      date: "032489"}
+      assert_equal expected, @enigma.encrypt_hash("message","12345","032489")
+    end
 end

@@ -1,9 +1,9 @@
 module LetterShift
-  def message_indices(message,array)
+  def string_indices(string,array)
     if array == @alphabet
-      message.chars.map {|char| @alphabet.index(char)}
+      string.chars.map {|char| @alphabet.index(char)}
     else
-      message.chars.map {|char| array.index(char)}
+      string.chars.map {|char| array.index(char)}
     end
   end
 
@@ -14,7 +14,7 @@ module LetterShift
   end
 
   def shift_letters(count, string, input_alphabet, output_alphabet)
-    message_indices(string,input_alphabet).each_with_index do |alpha_index,string_index|
+    string_indices(string,input_alphabet).each_with_index do |alpha_index,string_index|
       if string_index == count
         char_reassign(string,alpha_index,string_index,output_alphabet)
         count += 4

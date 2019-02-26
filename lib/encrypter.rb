@@ -2,11 +2,6 @@ require "./lib/letter_shift"
 
 module Encrypter
   include LetterShift
-  def encrypt_hash(encryption,key,offset)
-    {encryption: encryption,
-    key: key,
-    date: offset}
-  end
 
   def encrypt(message,*args)
     if !args.include?(nil)
@@ -24,6 +19,12 @@ module Encrypter
     end
     encrypt_integrated(message,@key,@offset)
   end
+  
+  def encrypt_hash(encryption,key,offset)
+    {encryption: encryption,
+      key: key,
+      date: offset}
+    end
 
   def encrypt_integrated(message,key,offset)
     message.downcase!
