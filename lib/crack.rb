@@ -1,13 +1,16 @@
+require "./lib/offsets"
 require "./lib/enigma"
 
 class Crack
+  include Offsets
+
   enigma = Enigma.new
 
   reader = File.open(ARGV[0],"r")
   encrypted = reader.read
   reader.close
 
-  date = ARGV[2]
+  ARGV[2] != nil ? date = ARGV[2] : date = enigma.shifts.today_offset
 
 
   writer = File.open(ARGV[1],"w")

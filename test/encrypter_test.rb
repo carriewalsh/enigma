@@ -41,4 +41,23 @@ class EncrypterTest < MiniTest::Test
     assert_equal expected, @enigma.encrypt("ducks2", "12345", "032489")
   end
 
+  def test_if_no_key_given_uses_random_number
+    @enigma.encrypt("ducks2","032489")
+    assert_equal String,@enigma.shifts.keys.class
+    assert_equal 5,@enigma.shifts.keys.length
+  end
+
+  def test_if_no_date_given_uses_date_today
+    @enigma.encrypt("ducks2", "12345")
+    assert_equal String,@enigma.shifts.offsets.class
+    assert_equal 6,@enigma.shifts.offsets.length
+  end
+
+  def test_if_no_date_or_offset_uses_random_and_today
+    @enigma.encrypt("ducks2")
+    assert_equal String,@enigma.shifts.keys.class
+    assert_equal 5,@enigma.shifts.keys.length
+    assert_equal String,@enigma.shifts.offsets.class
+    assert_equal 6,@enigma.shifts.offsets.length
+  end
 end
