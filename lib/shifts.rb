@@ -32,17 +32,10 @@ class Shifts
   end
 
   def create_shifted_arrays(key,offset)
-    while key == nil && offset == nil
-      # key = @shifts.random_key
-      # offset = @shifts.today_offset
-    end
     @a_array = @alphabet.rotate(@shifts[:a])
     @b_array = @alphabet.rotate(@shifts[:b])
     @c_array = @alphabet.rotate(@shifts[:c])
     @d_array = @alphabet.rotate(@shifts[:d])
-     #could use a while loop here
-    # if @offset = nil
-    # end
   end
 
   def create_hashes(key,offset)
