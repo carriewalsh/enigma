@@ -10,6 +10,11 @@ class LetterShiftTest < MiniTest::Test
   end
 
   def test_all_chars_are_rotated
-    assert_equal "urlci", @enigma.shift_all("ducks")
+    assert_equal "urlci", @enigma.shift_all_forward("ducks")
+  end
+
+  def test_chars_rotated_back
+    assert_equal "ducks", @enigma.shift_all_backward("urlci")
+
   end
 end

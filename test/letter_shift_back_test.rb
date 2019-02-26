@@ -1,3 +1,5 @@
+#delete
+
 require "./test/test_helper"
 
 class LetterShiftBackTest < MiniTest::Test

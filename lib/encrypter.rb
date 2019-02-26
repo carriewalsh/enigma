@@ -29,7 +29,7 @@ module Encrypter
     message.downcase!
     @shifts.create_hashes(key,offset)
     @shifts.create_shifted_arrays(key,offset)
-    shift_all(message)
+    shift_all_forward(message)
     encrypt_hash(message,key,offset)
   end
 end

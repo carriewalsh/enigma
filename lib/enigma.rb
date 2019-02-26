@@ -19,8 +19,4 @@ class Enigma
     @letter_align = {a: nil, b: nil, c: nil, d: nil}
     @options_hash = {first:[], second:[], third:[], fourth:[]}
   end
-
-  def char_index(message)
-    message.chars.map {|char| @alphabet.index(char)}
-  end
 end
