@@ -1,4 +1,4 @@
-require "./lib/letter_shift_back"
+require "./lib/letter_shift"
 
 module Decrypter
   include LetterShift
