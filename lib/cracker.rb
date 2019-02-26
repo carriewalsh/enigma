@@ -26,7 +26,11 @@ module Cracker
   def calculate_shifts
     @letter_align.each do |letter,letter_pair|
       diff = @alphabet.index(letter_pair[1]) - @alphabet.index(letter_pair[0])
-      diff>0 ? @shifts.shifts[letter]=diff : @shifts.shifts[letter] = 27+diff
+      if diff > 0
+        @shifts.shifts[letter] = diff
+      else
+        @shifts.shifts[letter] = 27 + diff
+      end
     end
   end
 
@@ -41,7 +45,9 @@ module Cracker
   end
 
   def options_array(key,ordinal)
-    key.to_i < 0 ? key = key.to_i + 27 : key
+    if key.to_i < 0
+      key.to_i += 27
+    end
     @options_hash[ordinal] << key.to_s
     @options_hash[ordinal] << (key.to_i + 27).to_s
     @options_hash[ordinal] << (key.to_i + 54).to_s

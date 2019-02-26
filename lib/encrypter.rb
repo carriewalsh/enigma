@@ -9,20 +9,20 @@ module Encrypter
   end
 
   def encrypt(message,*args)
-    if args.count == 2
-      key = args[0]
-      offset = args[1]
-    elsif args.count == 0
-      key = @shifts.random_key
-      offset = @shifts.today_offset
+    if !args.include?(nil)
+      @key = args[0]
+      @offset = args[1]
+    elsif args[0] == nil && args[1] == nil
+      @key = @shifts.random_key
+      @offset = @shifts.today_offset
     elsif args[0].length == 5
-      key = args[0]
-      offset = @shifts.today_offset
+      @key = args[0]
+      @offset = @shifts.today_offset
     elsif args[0].length == 6
-      offset = args[0]
-      key = @shifts.random_key
+      @key = @shifts.random_key
+      @offset = args[0]
     end
-    encrypt_integrated(message,key,offset)
+    encrypt_integrated(message,@key,@offset)
   end
 
   def encrypt_integrated(message,key,offset)
