@@ -9,7 +9,6 @@ class Encrypt
 
   enigma = Enigma.new
   key = ARGV[2]
-  binding.pry
   ARGV[2] != nil ? key = ARGV[2] : key = enigma.shifts.random_key
   ARGV[2] != nil ? offset = ARGV[3] : offset = enigma.shifts.today_offset
 
