@@ -4,7 +4,7 @@ by **Carrie Walsh**
 Turing Mod 1 - Final Independent Project
 
 ## Objective
-This project is to create a message encrypter-decrypter. The ultimate goal is to be able to use Command Line Interface to encrypt a saved message.txt file and save it as the file encrypted.rb. The encrypted.txt file can then be decrypted and the now decoded message can be seen in the created decrypted.rb.
+This project is to create a message encrypter-decrypter. The ultimate goal is to be able to use Command Line Interface to encrypt a saved message.txt file and save it as the file encrypted.txt. The encrypted.txt file can then be decrypted and the now decoded message can be seen in the created decrypted.txt.
 
 ### Encryption
 Encryption uses a 5-digit key and a 6-digit offset based on the date.
@@ -15,7 +15,7 @@ Magic methods use the key and offset to change the characters in a method.
 Decryption uses the same key/offset to shift the characters back to their originals.
 
 ### Crack
-This is for super secret messages. The messages have to end with " end" (so don't forget that) and you must know the date, but no key is needed.
+This is for super secret messages. The messages have to end with " end" (so don't forget that) and you must know the 6-digit date, but no key is needed.
 
 ## Installation
 `$ git clone git@github.com:carriewalsh/enigma.git`
@@ -50,7 +50,7 @@ To view the cracked message, open `cracked.txt`
 4 - Enigma works with encrypt, decrypt, and crack. The cracking method sometimes finds two plausible keys, so it returns one and cracks the message.
 
 ### Object-Oriented Programming
-3 - I tried really hard, but I have one method that is 14 lines and one initialize that is 8 lines. I did not use any class methods. Otherwise, I put a lot of thought into the names of variables and methods.
+3 - I tried really hard, but I have one method that is 14 lines and one initialize that is 8 lines. I did not use any class methods. Otherwise, I put a lot of thought into the names of classes, variables and methods. I went over each module/class to make sure each had a single responsibility.
 
 ### Test-Drive Development
 3 - I have 100% coverage and named tests clearly, but I did not use mocks/stubs.
