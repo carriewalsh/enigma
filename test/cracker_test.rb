@@ -9,7 +9,7 @@ class CrackerTest < MiniTest::Test
     @enigma.shifts.create_shifted_arrays(12345,"032489")
   end
 
-  def test_cracker_counts_characters_in_encryption
+  def test_counts_characters_in_encryption
     assert_equal 13, @enigma.count_chars("afdsrutlgu kq")
   end
 
@@ -18,7 +18,7 @@ class CrackerTest < MiniTest::Test
     assert_equal expected, @enigma.letter_pairs("afdsrutlgu kq")
   end
 
-  def test_cracker_aligns_chars_to_shift_letters
+  def test_aligns_chars_to_shift_letters
     expected = {a: ["d","q"],
                 b: [" ","u"],
                 c: ["e"," "],
@@ -80,7 +80,7 @@ class CrackerTest < MiniTest::Test
     assert_equal true, actual
   end
 
-  def test_cracker_finds_key_for_encrypted_message
+  def test_finds_key_for_encrypted_message
     @enigma.find_letter_align("afdsrutlgu kq")
     @enigma.calculate_shifts
     @enigma.calculate_keys("230219")
@@ -89,7 +89,7 @@ class CrackerTest < MiniTest::Test
     assert_equal "33977", @enigma.print_key
   end
 
-  def test_cracker_finds_decrypted_message
+  def test_finds_decrypted_message
     expected = {decryption: "olive you end",
                 key: "33977",
                 date: "230219"}

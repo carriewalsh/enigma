@@ -9,7 +9,6 @@ class OffsetsTest < MiniTest::Test
   def test_makes_offset_of_todays_date
     assert_equal String, @shifts.today_offset.class
     assert_equal 6, @shifts.today_offset.to_s.length
-    # assert_equal Time.new.strftime("%d%m%y"), @shifts.today_offset
   end
 
   def test_squares_date

@@ -22,5 +22,4 @@ class DecrypterTest < MiniTest::Test
                 date: "032489"}
     assert_equal expected, @enigma.decrypt("urlci","12345","032489")
   end
-
 end
