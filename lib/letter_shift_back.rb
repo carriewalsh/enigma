@@ -7,7 +7,6 @@ module LetterShiftBack
           count += 4
         end
       end
-      encryption
     end
 
     def a_back_alpha_if(encryption,char,index)
@@ -24,7 +23,6 @@ module LetterShiftBack
           count += 4
         end
       end
-      encryption
     end
 
     def b_back_alpha_if(encryption,char,index)
@@ -41,7 +39,6 @@ module LetterShiftBack
           count += 4
         end
       end
-      encryption
     end
 
     def c_back_alpha_if(encryption,char,index)
@@ -58,7 +55,6 @@ module LetterShiftBack
           count += 4
         end
       end
-      encryption
     end
 
     def d_back_alpha_if(encryption,char,index)
