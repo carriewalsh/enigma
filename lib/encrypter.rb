@@ -9,7 +9,6 @@ module Encrypter
   end
 
   def encrypt(message,*args)
-    message.downcase!
     if args.count == 2
       key = args[0]
       offset = args[1]
@@ -23,9 +22,15 @@ module Encrypter
       offset = args[0]
       key = @shifts.random_key
     end
+    encrypt_integrated(message,key,offset)
+  end
+
+  def encrypt_integrated(message,key,offset)
+    message.downcase!
     @shifts.create_hashes(key,offset)
     @shifts.create_shifted_arrays(key,offset)
     shift_all(message)
     encrypt_hash(message,key,offset)
   end
+
 end
