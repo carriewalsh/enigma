@@ -45,9 +45,6 @@ module Cracker
   end
 
   def options_array(key,ordinal)
-    if key.to_i < 0
-      key.to_i += 27
-    end
     @options_hash[ordinal] << key.to_s
     @options_hash[ordinal] << (key.to_i + 27).to_s
     @options_hash[ordinal] << (key.to_i + 54).to_s
