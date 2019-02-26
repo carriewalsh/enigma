@@ -9,7 +9,7 @@ class WrongsTest < MiniTest::Test
     @enigma.shifts.create_shifted_arrays(12345,"032489")
     @enigma.find_letter_align("afdsrutlgu kq")
     @enigma.calculate_shifts
-    @enigma.calculate_keys(230219)
+    @enigma.calculate_keys("230219")
     @enigma.all_option_arrays
   end
 

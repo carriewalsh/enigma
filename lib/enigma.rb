@@ -1,13 +1,9 @@
 require "./lib/shifts"
-require "./lib/letter_shift"
-require "./lib/letter_shift_back"
 require "./lib/encrypter"
 require "./lib/decrypter"
 require "./lib/cracker"
 
 class Enigma
-  include LetterShift
-  include LetterShiftBack
   include Encrypter
   include Decrypter
   include Cracker
