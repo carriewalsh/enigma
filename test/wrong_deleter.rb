@@ -1,6 +1,6 @@
 require './test/test_helper'
 
-class WrongsTest < MiniTest::Test
+class WrongDeleterTest < MiniTest::Test
   def setup
     @enigma = Enigma.new
     @enigma.cipher.create_keys(12345)

@@ -1,6 +1,6 @@
 require "./test/test_helper"
 
-class KeysTest < MiniTest::Test
+class KeyGeneratorTest < MiniTest::Test
 
   def setup
     @cipher = Cipher.new

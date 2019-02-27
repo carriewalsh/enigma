@@ -1,6 +1,6 @@
 require "./test/test_helper"
 
-class OffsetsTest < MiniTest::Test
+class OffsetGeneratorTest < MiniTest::Test
 
   def setup
     @cipher = Cipher.new

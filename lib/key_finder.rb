@@ -1,7 +1,7 @@
-require "./lib/wrongs"
+require "./lib/wrong_deleter"
 
 module KeyFinder
-  include Wrongs
+  include WrongDeleter
 
   def calculate_shifts
     @letter_align.each do |letter,letter_pair|

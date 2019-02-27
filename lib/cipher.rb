@@ -1,9 +1,9 @@
-require "./lib/keys"
-require "./lib/offsets"
+require "./lib/key_generator"
+require "./lib/offset_generator"
 
 class Cipher
-  include Keys
-  include Offsets
+  include KeyGenerator
+  include OffsetGenerator
 
   attr_reader :keys,
               :offsets,

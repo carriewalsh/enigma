@@ -53,10 +53,10 @@ To view the cracked message, open `cracked.txt`
 3 - Methods have been pared down and re-divided amongst modules. Readability and method length have been balanced. One method has 14 lines and one has 8 lines. Cipher initialize has 8 lines.
 - Crack, Encrypt, and Decrypt all depend on Enigma
 - Enigma depends on Cipher, Encrypter, Decrypter, and Cracker
-- Cipher depends on Keys and Offsets
+- Cipher depends on KeyGenerator and OffsetGenerator
 - Encrypter and Decrypter depend on LetterShift
 - Cracker depends on KeyFinder
-- KeyFinder depends on Wrongs
+- KeyFinder depends on WrongDeleter
 
 ### Test-Drive Development
 3 - I have 100% coverage and named tests clearly, but I did not use mocks/stubs. I left tests for encrypt and decrypt to get full coverage.
