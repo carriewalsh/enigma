@@ -1,7 +1,7 @@
-require "./lib/letter_shift_back"
+require "./lib/letter_shift"
 
 module Decrypter
-  include LetterShiftBack
+  include LetterShift
   def decrypt_hash(decryption,key,offset)
     {decryption: decryption,
     key: key,
@@ -9,9 +9,9 @@ module Decrypter
   end
 
   def decrypt(encryption,key,offset)
-    @shifts.create_hashes(key,offset)
-    @shifts.create_shifted_arrays(key,offset)
-    shift_all_back(encryption)
+    @cipher.create_hashes(key,offset)
+    @cipher.create_shifted_arrays(key,offset)
+    shift_all_backward(encryption)
     decrypt_hash(encryption,key,offset)
   end
 end

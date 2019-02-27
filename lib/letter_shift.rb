@@ -1,73 +1,40 @@
 module LetterShift
-  def shift_a(message)
-    count = 0
-    char_index(message).each_with_index do |char,index|
-      if index == count
-        a_alpha_if(message,char,index)
+  def string_indices(string,array)
+    if array == @alphabet
+      string.chars.map {|char| @alphabet.index(char)}
+    else
+      string.chars.map {|char| array.index(char)}
+    end
+  end
+
+  def char_reassign(string,alpha_index,string_index,array)
+    if alpha_index != nil
+      string[string_index] = array[alpha_index]
+    end
+  end
+
+  def shift_letters(count, string, input_alphabet, output_alphabet)
+    string_indices(string,input_alphabet).each_with_index do |alpha_index,string_index|
+      if string_index == count
+        char_reassign(string,alpha_index,string_index,output_alphabet)
         count += 4
       end
     end
   end
 
-  def a_alpha_if(message,char,index)
-    if char != nil
-      message[index] = @shifts.a_array[char]
-    end
+  def shift_all_forward(string)
+    shift_letters(0, string, @alphabet, @cipher.a_array)
+    shift_letters(1, string, @alphabet, @cipher.b_array)
+    shift_letters(2, string, @alphabet, @cipher.c_array)
+    shift_letters(3, string, @alphabet, @cipher.d_array)
+    string
   end
 
-  def shift_b(message)
-    count = 1
-    char_index(message).each_with_index do |char,index|
-      if index == count
-        b_alpha_if(message,char,index)
-        count += 4
-      end
-    end
-  end
-
-  def b_alpha_if(message,char,index)
-    if char != nil
-      message[index] = @shifts.b_array[char]
-    end
-  end
-
-  def shift_c(message)
-    count = 2
-    char_index(message).each_with_index do |char,index|
-      if index == count
-        c_alpha_if(message,char,index)
-        count += 4
-      end
-    end
-  end
-
-  def c_alpha_if(message,char,index)
-    if char != nil
-      message[index] = @shifts.c_array[char]
-    end
-  end
-
-  def shift_d(message)
-    count = 3
-    char_index(message).each_with_index do |char,index|
-      if index == count
-        d_alpha_if(message,char,index)
-        count += 4
-      end
-    end
-  end
-
-  def d_alpha_if(message,char,index)
-    if char != nil
-      message[index] = @shifts.d_array[char]
-    end
-  end
-
-  def shift_all(message)
-    shift_a(message)
-    shift_b(message)
-    shift_c(message)
-    shift_d(message)
-    message
+  def shift_all_backward(string)
+    shift_letters(0, string, @cipher.a_array, @alphabet)
+    shift_letters(1, string, @cipher.b_array, @alphabet)
+    shift_letters(2, string, @cipher.c_array, @alphabet)
+    shift_letters(3, string, @cipher.d_array, @alphabet)
+    string
   end
 end

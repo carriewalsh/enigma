@@ -1,91 +1,35 @@
 module Wrongs
   def remove_invalid_numbers
-    @options_hash.each do |letter,array|
-      @options_hash[letter] = array.find_all {|option| option.length == 2}
+    @key_options_hash.each do |letter,array|
+      @key_options_hash[letter] = array.find_all {|option| option.length == 2}
     end
   end
 
-  def remove_first_wrongs_forward
-    num = @options_hash[:first]
+  def remove_wrongs(direction,iterated,array)
+    num = @key_options_hash[iterated]
     range = (0...num.length).to_a.reverse
     range.each do |number|
-      if check_digit(num[number],@options_hash[:second]) == false
-        @options_hash[:first].delete_at(number)
-      end
-    end
-  end
-
-  def remove_second_wrongs_forward
-    num = @options_hash[:second]
-    range = (0...num.length).to_a.reverse
-    range.each do |number|
-      if check_digit(num[number],@options_hash[:third]) == false
-        @options_hash[:second].delete_at(number)
-      end
-    end
-  end
-
-  def remove_second_wrongs_reverse
-    num = @options_hash[:second]
-    range = (0...num.length).to_a.reverse
-    range.each do |number|
-      if check_digit_reverse(num[number],@options_hash[:first]) == false
-        @options_hash[:second].delete_at(number)
-      end
-    end
-  end
-
-  def remove_second_wrongs
-    remove_second_wrongs_forward
-    remove_second_wrongs_reverse
-  end
-
-  def remove_third_wrongs_forward
-    num = @options_hash[:third]
-    range = (0...num.length).to_a.reverse
-    range.each do |number|
-      if check_digit(num[number],@options_hash[:fourth]) == false
-        @options_hash[:third].delete_at(number)
-      end
-    end
-  end
-
-  def remove_third_wrongs_reverse
-    num = @options_hash[:third]
-    range = (0...num.length).to_a.reverse
-    range.each do |number|
-      if check_digit_reverse(num[number],@options_hash[:second]) == false
-        @options_hash[:third].delete_at(number)
-      end
-    end
-  end
-
-  def remove_third_wrongs
-    remove_third_wrongs_forward
-    remove_third_wrongs_reverse
-  end
-
-  def remove_fourth_wrongs_reverse
-    num = @options_hash[:fourth]
-    range = (0...num.length).to_a.reverse
-    range.each do |number|
-      if check_digit_reverse(num[number],@options_hash[:third]) == false
-        @options_hash[:fourth].delete_at(number)
+      if check_digit(direction,num[number],@key_options_hash[array]) == false
+        @key_options_hash[iterated].delete_at(number)
       end
     end
   end
 
   def remove_wrongs_forward
-    remove_first_wrongs_forward
-    remove_second_wrongs
-    remove_third_wrongs
-    remove_fourth_wrongs_reverse
+    remove_wrongs("forward", :first,:second)
+    remove_wrongs("forward", :second,:third)
+    remove_wrongs("forward", :third,:fourth)
+    remove_wrongs("reverse", :fourth,:third)
+    remove_wrongs("reverse", :third,:second)
+    remove_wrongs("reverse", :second,:first)
   end
 
   def remove_wrongs_reverse
-    remove_fourth_wrongs_reverse
-    remove_third_wrongs
-    remove_second_wrongs
-    remove_first_wrongs_forward
+    remove_wrongs("reverse", :fourth,:third)
+    remove_wrongs("reverse", :third,:second)
+    remove_wrongs("reverse", :second,:first)
+    remove_wrongs("forward", :third,:fourth)
+    remove_wrongs("forward", :second,:third)
+    remove_wrongs("forward", :first,:second)
   end
 end

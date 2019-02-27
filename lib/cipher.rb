@@ -1,7 +1,7 @@
 require "./lib/keys"
 require "./lib/offsets"
 
-class Shifts
+class Cipher
   include Keys
   include Offsets
 

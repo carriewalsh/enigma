@@ -1,16 +1,10 @@
 require "./lib/enigma"
-require "./lib/keys"
-require "./lib/offsets"
 require "pry"
 
 class Encrypt
-  include Keys
-  include Offsets
-
   enigma = Enigma.new
   key = ARGV[2]
-  ARGV[2] != nil ? key = ARGV[2] : key = enigma.shifts.random_key
-  ARGV[2] != nil ? offset = ARGV[3] : offset = enigma.shifts.today_offset
+  offset = ARGV[3]
 
   reader = File.open(ARGV[0],"r")
 
@@ -22,5 +16,5 @@ class Encrypt
 
   writer.write(encrypted[:encryption])
   writer.close
-  puts "Created #{ARGV[1]} with the key #{key} and date #{offset}"
+  puts "Created #{ARGV[1]} with the key #{enigma.key} and date #{enigma.offset}"
 end

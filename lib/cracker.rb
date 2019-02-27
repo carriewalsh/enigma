@@ -1,12 +1,10 @@
-require "./lib/shifts"
+require "./lib/cipher"
 require "./lib/wrongs"
-require "./lib/letter_shift_back"
 require "./lib/decrypter"
 require "pry"
 
 module Cracker
   include Wrongs
-  include LetterShiftBack
   include Decrypter
 
   def count_chars(message)
@@ -28,41 +26,44 @@ module Cracker
   def calculate_shifts
     @letter_align.each do |letter,letter_pair|
       diff = @alphabet.index(letter_pair[1]) - @alphabet.index(letter_pair[0])
-      diff>0 ? @shifts.shifts[letter]=diff : @shifts.shifts[letter] = 27+diff
+      if diff > 0
+        @cipher.shifts[letter] = diff
+      else
+        @cipher.shifts[letter] = 27 + diff
+      end
     end
   end
 
   def calculate_keys(date)
-    @shifts.offset_integrated(date)
-    @shifts.offsets.each do |letter,offset|
-      @shifts.keys[letter] = @shifts.shifts[letter] - @shifts.offsets[letter]
+    @cipher.offset_integrated(date)
+    @cipher.offsets.each do |letter,offset|
+      @cipher.keys[letter] = @cipher.shifts[letter] - @cipher.offsets[letter]
     end
-    @shifts.keys.each do |letter,key|
-      @shifts.keys[letter] = key.to_s.rjust(2,"0")
+    @cipher.keys.each do |letter,key|
+      @cipher.keys[letter] = key.to_s.rjust(2,"0")
     end
   end
 
   def options_array(key,ordinal)
-    key.to_i < 0 ? key = key.to_i + 27 : key
-    @options_hash[ordinal] << key.to_s
-    @options_hash[ordinal] << (key.to_i + 27).to_s
-    @options_hash[ordinal] << (key.to_i + 54).to_s
-    @options_hash[ordinal] << (key.to_i + 81).to_s
+    @key_options_hash[ordinal] << key.to_s
+    @key_options_hash[ordinal] << (key.to_i + 27).to_s
+    @key_options_hash[ordinal] << (key.to_i + 54).to_s
+    @key_options_hash[ordinal] << (key.to_i + 81).to_s
   end
 
   def all_option_arrays
-    options_array(@shifts.keys[:a],:first)
-    options_array(@shifts.keys[:b],:second)
-    options_array(@shifts.keys[:c],:third)
-    options_array(@shifts.keys[:d],:fourth)
+    options_array(@cipher.keys[:a],:first)
+    options_array(@cipher.keys[:b],:second)
+    options_array(@cipher.keys[:c],:third)
+    options_array(@cipher.keys[:d],:fourth)
   end
 
-  def check_digit(ones_num,array)
-    array.any? {|tens_num| tens_num[0] == ones_num[1]}
-  end
-
-  def check_digit_reverse(tens_num,array)
-    array.any? {|ones_num| tens_num[0] == ones_num[1]}
+  def check_digit(direction, number, array)
+    if direction == "forward"
+      array.any? {|tens_num| tens_num[0] == number[1]}
+    elsif direction == "reverse"
+      array.any? {|ones_num| number[0] == ones_num[1]}
+    end
   end
 
   def find_key
@@ -72,11 +73,11 @@ module Cracker
   end
 
   def print_key
-    first = @options_hash[:first].first
-    second = @options_hash[:second].find {|number| number[0] == first[1]}
-    third = @options_hash[:third].find {|number| number[0] == second[1]}
-    fourth = @options_hash[:fourth].find {|number| number[0] == third[1]}
-    @key = @options_hash[:first].first + third + fourth[1]
+    first = @key_options_hash[:first].first
+    second = @key_options_hash[:second].find {|number| number[0] == first[1]}
+    third = @key_options_hash[:third].find {|number| number[0] == second[1]}
+    fourth = @key_options_hash[:fourth].find {|number| number[0] == third[1]}
+    @key = @key_options_hash[:first].first + third + fourth[1]
   end
 
   def crack(encryption,date)
