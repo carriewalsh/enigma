@@ -27,5 +27,5 @@ class KeyGeneratorTest < MiniTest::Test
       c: 34,
       d: 45}
       assert_equal expected, @cipher.keys
-    end
+  end
 end
