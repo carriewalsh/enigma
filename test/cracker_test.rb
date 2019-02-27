@@ -27,4 +27,9 @@ class CrackerTest < MiniTest::Test
     assert_equal expected, @enigma.letter_align
   end
 
+  def test_finds_decrypted_message
+    @enigma.crack("afdsrutlgu kq",nil)
+    assert_equal String, @enigma.offset.class
+    assert_equal 6, @enigma.offset.length
+  end
 end

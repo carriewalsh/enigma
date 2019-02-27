@@ -24,7 +24,7 @@ module Encrypter
     {encryption: encryption,
       key: key,
       date: offset}
-    end
+  end
 
   def encrypt_integrated(message,key,offset)
     message.downcase!
