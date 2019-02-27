@@ -57,7 +57,7 @@ class CrackerTest < MiniTest::Test
                 :second=>["12", "39", "66", "93"],
                 :third=>["16", "43", "70", "97"],
                 :fourth=>["23", "50", "77", "104"]}
-    assert_equal expected, @enigma.options_hash
+    assert_equal expected, @enigma.key_options_hash
   end
 
   def test_can_compare_number_to_array_of_numbers
@@ -65,9 +65,9 @@ class CrackerTest < MiniTest::Test
     @enigma.calculate_shifts
     @enigma.calculate_keys("230219")
     @enigma.all_option_arrays
-    actual_1 = @enigma.check_digit("forward",@enigma.options_hash[:first][0],@enigma.options_hash[:second])
+    actual_1 = @enigma.check_digit("forward",@enigma.key_options_hash[:first][0],@enigma.key_options_hash[:second])
     assert_equal true, actual_1
-    actual_2 = @enigma.check_digit("forward",@enigma.options_hash[:first][2],@enigma.options_hash[:second])
+    actual_2 = @enigma.check_digit("forward",@enigma.key_options_hash[:first][2],@enigma.key_options_hash[:second])
     assert_equal false, actual_2
   end
 
@@ -76,7 +76,7 @@ class CrackerTest < MiniTest::Test
     @enigma.calculate_shifts
     @enigma.calculate_keys("230219")
     @enigma.all_option_arrays
-    actual = @enigma.check_digit("reverse", @enigma.options_hash[:fourth][2],@enigma.options_hash[:third])
+    actual = @enigma.check_digit("reverse", @enigma.key_options_hash[:fourth][2],@enigma.key_options_hash[:third])
     assert_equal true, actual
   end
 

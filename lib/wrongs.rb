@@ -1,16 +1,16 @@
 module Wrongs
   def remove_invalid_numbers
-    @options_hash.each do |letter,array|
-      @options_hash[letter] = array.find_all {|option| option.length == 2}
+    @key_options_hash.each do |letter,array|
+      @key_options_hash[letter] = array.find_all {|option| option.length == 2}
     end
   end
 
   def remove_wrongs(direction,iterated,array)
-    num = @options_hash[iterated]
+    num = @key_options_hash[iterated]
     range = (0...num.length).to_a.reverse
     range.each do |number|
-      if check_digit(direction,num[number],@options_hash[array]) == false
-        @options_hash[iterated].delete_at(number)
+      if check_digit(direction,num[number],@key_options_hash[array]) == false
+        @key_options_hash[iterated].delete_at(number)
       end
     end
   end

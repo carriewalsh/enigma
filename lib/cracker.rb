@@ -45,10 +45,10 @@ module Cracker
   end
 
   def options_array(key,ordinal)
-    @options_hash[ordinal] << key.to_s
-    @options_hash[ordinal] << (key.to_i + 27).to_s
-    @options_hash[ordinal] << (key.to_i + 54).to_s
-    @options_hash[ordinal] << (key.to_i + 81).to_s
+    @key_options_hash[ordinal] << key.to_s
+    @key_options_hash[ordinal] << (key.to_i + 27).to_s
+    @key_options_hash[ordinal] << (key.to_i + 54).to_s
+    @key_options_hash[ordinal] << (key.to_i + 81).to_s
   end
 
   def all_option_arrays
@@ -73,11 +73,11 @@ module Cracker
   end
 
   def print_key
-    first = @options_hash[:first].first
-    second = @options_hash[:second].find {|number| number[0] == first[1]}
-    third = @options_hash[:third].find {|number| number[0] == second[1]}
-    fourth = @options_hash[:fourth].find {|number| number[0] == third[1]}
-    @key = @options_hash[:first].first + third + fourth[1]
+    first = @key_options_hash[:first].first
+    second = @key_options_hash[:second].find {|number| number[0] == first[1]}
+    third = @key_options_hash[:third].find {|number| number[0] == second[1]}
+    fourth = @key_options_hash[:fourth].find {|number| number[0] == third[1]}
+    @key = @key_options_hash[:first].first + third + fourth[1]
   end
 
   def crack(encryption,date)
