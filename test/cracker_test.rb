@@ -1,4 +1,5 @@
 require "./test/test_helper"
+require "./lib/enigma"
 
 class CrackerTest < MiniTest::Test
   def setup
@@ -18,7 +19,7 @@ class CrackerTest < MiniTest::Test
     assert_equal expected, @enigma.letter_pairs("afdsrutlgu kq")
   end
 
-  def test_aligns_chars_to_shift_letters
+  def test_aligns_characters_to_shift_letters
     expected = {a: ["d","q"],
                 b: [" ","u"],
                 c: ["e"," "],

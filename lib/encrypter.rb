@@ -5,19 +5,33 @@ module Encrypter
 
   def encrypt(message,*args)
     if !args.include?(nil)
-      @key = args[0]
-      @offset = args[1]
+      two_arguments_given(args)
     elsif args[0] == nil && args[1] == nil
-      @key = @cipher.random_key
-      @offset = @cipher.today_offset
-    elsif args[0].length == 5
+      no_arguments_given(args)
+    elsif args.one? {|arg| arg == nil}
+      one_argument_given(args)
+    end
+    encrypt_integrated(message,@key,@offset)
+  end
+
+  def two_arguments_given(args)
+    @key = args[0]
+    @offset = args[1]
+  end
+  
+  def no_arguments_given(args)
+    @key = @cipher.random_key
+    @offset = @cipher.today_offset
+  end
+
+  def one_argument_given(args)
+    if args[0].length == 5
       @key = args[0]
       @offset = @cipher.today_offset
     elsif args[0].length == 6
       @key = @cipher.random_key
       @offset = args[0]
     end
-    encrypt_integrated(message,@key,@offset)
   end
 
   def encrypt_hash(encryption,key,offset)

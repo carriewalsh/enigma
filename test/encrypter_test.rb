@@ -1,4 +1,5 @@
 require "./test/test_helper"
+require "./lib/enigma"
 
 class EncrypterTest < MiniTest::Test
   def setup
@@ -42,17 +43,17 @@ class EncrypterTest < MiniTest::Test
     assert_equal expected, @enigma.encrypt("ducks2", "12345", "032489")
   end
 
-  def test_if_no_key_given_uses_random_number
+  def test_encrypter_uses_random_number_if_no_key_given
     @enigma.encrypt("ducks2","032489",nil)
     assert_equal String, @enigma.key.class
   end
 
-  def test_if_no_date_given_uses_date_today
+  def test_encrypter_uses_date_today_if_no_date_given
     @enigma.encrypt("ducks2", "12345", nil)
     assert_equal String, @enigma.offset.class
   end
 
-  def test_if_no_date_or_offset_uses_random_and_today
+  def test_encrypter_uses_random_number_and_date_today_if_given_no_info
     @enigma.encrypt("ducks2",nil,nil)
     assert_equal String, @enigma.key.class
     assert_equal String, @enigma.offset.class

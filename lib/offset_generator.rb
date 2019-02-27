@@ -1,4 +1,4 @@
-module Offsets
+module OffsetGenerator
   def today_offset
     Time.new.strftime("%d%m%y")
   end

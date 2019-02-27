@@ -1,4 +1,4 @@
-module Wrongs
+module WrongDeleter
   def remove_invalid_numbers
     @key_options_hash.each do |letter,array|
       @key_options_hash[letter] = array.find_all {|option| option.length == 2}

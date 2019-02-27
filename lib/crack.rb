@@ -1,4 +1,3 @@
-require "./lib/offsets"
 require "./lib/enigma"
 
 class Crack
