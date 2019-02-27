@@ -10,7 +10,7 @@ class Crack
   encrypted = reader.read
   reader.close
 
-  ARGV[2] != nil ? date = ARGV[2] : date = enigma.shifts.today_offset
+  ARGV[2] != nil ? date = ARGV[2] : date = enigma.cipher.today_offset
 
 
   writer = File.open(ARGV[1],"w")
