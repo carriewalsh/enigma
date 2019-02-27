@@ -1,5 +1,4 @@
 require "./lib/enigma"
-require "pry"
 
 class Encrypt
   enigma = Enigma.new

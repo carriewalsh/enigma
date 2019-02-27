@@ -47,13 +47,19 @@ To view the cracked message, open `cracked.txt`
 ## Self-Assessment
 
 ### Functionality
-4 - Enigma works with encrypt, decrypt, and crack. The cracking method sometimes finds two plausible keys, so it returns one and cracks the message.
+4 - Enigma works with encrypt, decrypt, and crack. The cracking method sometimes finds two plausible keys, so it returns one and cracks the message. Still fully functional after changes from feedback.
 
 ### Object-Oriented Programming
-3 - I tried really hard, but I have one method that is 14 lines and one initialize that is 8 lines. I did not use any class methods. Otherwise, I put a lot of thought into the names of classes, variables and methods. I went over each module/class to make sure each had a single responsibility.
+3 - Methods have been pared down and re-divided amongst modules. Readability and method length have been balanced. One method has 14 lines and one has 8 lines. Cipher initialize has 8 lines.
+- Crack, Encrypt, and Decrypt all depend on Enigma
+- Enigma depends on Cipher, Encrypter, Decrypter, and Cracker
+- Cipher depends on Keys and Offsets
+- Encrypter and Decrypter depend on LetterShift
+- Cracker depends on KeyFinder
+- KeyFinder depends on Wrongs
 
 ### Test-Drive Development
-3 - I have 100% coverage and named tests clearly, but I did not use mocks/stubs.
+3 - I have 100% coverage and named tests clearly, but I did not use mocks/stubs. I left tests for encrypt and decrypt to get full coverage.
 
 ### Version Control
-4 - As of this addition on the README, I have 182 commits and 24 PR's. I made sure to commit often after small additions of functionality. All my commit methods reflected clear purpose.
+4 - As of this addition on the README, I have 197 commits and 27 PR's. I made sure to commit often after small additions of functionality. All my commit methods reflected clear purpose.
