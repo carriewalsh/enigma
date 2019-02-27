@@ -1,4 +1,5 @@
 require './test/test_helper'
+require "./lib/enigma"
 
 class WrongDeleterTest < MiniTest::Test
   def setup

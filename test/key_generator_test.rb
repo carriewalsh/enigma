@@ -1,4 +1,5 @@
 require "./test/test_helper"
+require "./lib/cipher"
 
 class KeyGeneratorTest < MiniTest::Test
 
