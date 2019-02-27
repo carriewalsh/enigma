@@ -23,18 +23,18 @@ module LetterShift
   end
 
   def shift_all_forward(string)
-    shift_letters(0, string, @alphabet, @shifts.a_array)
-    shift_letters(1, string, @alphabet, @shifts.b_array)
-    shift_letters(2, string, @alphabet, @shifts.c_array)
-    shift_letters(3, string, @alphabet, @shifts.d_array)
+    shift_letters(0, string, @alphabet, @cipher.a_array)
+    shift_letters(1, string, @alphabet, @cipher.b_array)
+    shift_letters(2, string, @alphabet, @cipher.c_array)
+    shift_letters(3, string, @alphabet, @cipher.d_array)
     string
   end
 
   def shift_all_backward(string)
-    shift_letters(0, string, @shifts.a_array, @alphabet)
-    shift_letters(1, string, @shifts.b_array, @alphabet)
-    shift_letters(2, string, @shifts.c_array, @alphabet)
-    shift_letters(3, string, @shifts.d_array, @alphabet)
+    shift_letters(0, string, @cipher.a_array, @alphabet)
+    shift_letters(1, string, @cipher.b_array, @alphabet)
+    shift_letters(2, string, @cipher.c_array, @alphabet)
+    shift_letters(3, string, @cipher.d_array, @alphabet)
     string
   end
 end

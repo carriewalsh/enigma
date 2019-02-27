@@ -9,8 +9,8 @@ module Decrypter
   end
 
   def decrypt(encryption,key,offset)
-    @shifts.create_hashes(key,offset)
-    @shifts.create_shifted_arrays(key,offset)
+    @cipher.create_hashes(key,offset)
+    @cipher.create_shifted_arrays(key,offset)
     shift_all_backward(encryption)
     decrypt_hash(encryption,key,offset)
   end

@@ -1,4 +1,4 @@
-require "./lib/shifts"
+require "./lib/cipher"
 require "./lib/wrongs"
 require "./lib/decrypter"
 require "pry"
@@ -27,20 +27,20 @@ module Cracker
     @letter_align.each do |letter,letter_pair|
       diff = @alphabet.index(letter_pair[1]) - @alphabet.index(letter_pair[0])
       if diff > 0
-        @shifts.shifts[letter] = diff
+        @cipher.shifts[letter] = diff
       else
-        @shifts.shifts[letter] = 27 + diff
+        @cipher.shifts[letter] = 27 + diff
       end
     end
   end
 
   def calculate_keys(date)
-    @shifts.offset_integrated(date)
-    @shifts.offsets.each do |letter,offset|
-      @shifts.keys[letter] = @shifts.shifts[letter] - @shifts.offsets[letter]
+    @cipher.offset_integrated(date)
+    @cipher.offsets.each do |letter,offset|
+      @cipher.keys[letter] = @cipher.shifts[letter] - @cipher.offsets[letter]
     end
-    @shifts.keys.each do |letter,key|
-      @shifts.keys[letter] = key.to_s.rjust(2,"0")
+    @cipher.keys.each do |letter,key|
+      @cipher.keys[letter] = key.to_s.rjust(2,"0")
     end
   end
 
@@ -52,10 +52,10 @@ module Cracker
   end
 
   def all_option_arrays
-    options_array(@shifts.keys[:a],:first)
-    options_array(@shifts.keys[:b],:second)
-    options_array(@shifts.keys[:c],:third)
-    options_array(@shifts.keys[:d],:fourth)
+    options_array(@cipher.keys[:a],:first)
+    options_array(@cipher.keys[:b],:second)
+    options_array(@cipher.keys[:c],:third)
+    options_array(@cipher.keys[:d],:fourth)
   end
 
   def check_digit(direction, number, array)

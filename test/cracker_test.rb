@@ -3,10 +3,10 @@ require "./test/test_helper"
 class CrackerTest < MiniTest::Test
   def setup
     @enigma = Enigma.new
-    @enigma.shifts.create_keys(12345)
-    @enigma.shifts.offset_integrated("032489")
-    @enigma.shifts.create_shifts
-    @enigma.shifts.create_shifted_arrays(12345,"032489")
+    @enigma.cipher.create_keys(12345)
+    @enigma.cipher.offset_integrated("032489")
+    @enigma.cipher.create_shifts
+    @enigma.cipher.create_shifted_arrays(12345,"032489")
   end
 
   def test_counts_characters_in_encryption
@@ -34,7 +34,7 @@ class CrackerTest < MiniTest::Test
                 b: 21,
                 c: 22,
                 d: 24}
-    assert_equal expected, @enigma.shifts.shifts
+    assert_equal expected, @enigma.cipher.shifts
   end
 
   def test_keys_can_be_calculated_based_on_date
@@ -45,7 +45,7 @@ class CrackerTest < MiniTest::Test
                 c: "16",
                 d: "23"}
     @enigma.calculate_keys("230219")
-    assert_equal expected, @enigma.shifts.keys
+    assert_equal expected, @enigma.cipher.keys
   end
 
   def test_key_options_can_be_found

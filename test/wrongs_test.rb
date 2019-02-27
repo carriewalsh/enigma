@@ -3,10 +3,10 @@ require './test/test_helper'
 class WrongsTest < MiniTest::Test
   def setup
     @enigma = Enigma.new
-    @enigma.shifts.create_keys(12345)
-    @enigma.shifts.offset_integrated("032489")
-    @enigma.shifts.create_shifts
-    @enigma.shifts.create_shifted_arrays(12345,"032489")
+    @enigma.cipher.create_keys(12345)
+    @enigma.cipher.offset_integrated("032489")
+    @enigma.cipher.create_shifts
+    @enigma.cipher.create_shifted_arrays(12345,"032489")
     @enigma.find_letter_align("afdsrutlgu kq")
     @enigma.calculate_shifts
     @enigma.calculate_keys("230219")

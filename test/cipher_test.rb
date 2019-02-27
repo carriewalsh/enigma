@@ -1,13 +1,13 @@
 require "./test/test_helper"
 
-class ShiftsTest < MiniTest::Test
+class CipherTest < MiniTest::Test
 
   def setup
-    @shifts = Shifts.new
+    @cipher = Cipher.new
   end
 
   def test_shifts_exist
-    assert_instance_of Shifts, @shifts
+    assert_instance_of Cipher, @cipher
   end
 
   def test_shifts_begins_with_skeleton_keys_hash
@@ -15,7 +15,7 @@ class ShiftsTest < MiniTest::Test
                 b: nil,
                 c: nil,
                 d: nil}
-    assert_equal expected, @shifts.keys
+    assert_equal expected, @cipher.keys
   end
 
   def test_shifts_begins_with_skeleton_offsets_hash
@@ -23,7 +23,7 @@ class ShiftsTest < MiniTest::Test
                 b: nil,
                 c: nil,
                 d: nil}
-    assert_equal expected, @shifts.offsets
+    assert_equal expected, @cipher.offsets
   end
 
   def test_shifts_begins_with_skeleton_shifts_hash
@@ -31,20 +31,20 @@ class ShiftsTest < MiniTest::Test
                 b: nil,
                 c: nil,
                 d: nil}
-    assert_equal expected, @shifts.shifts
+    assert_equal expected, @cipher.shifts
   end
 
   def test_shifts_made_and_stored_in_hash
-    @shifts.create_keys(12345)
-    square = @shifts.square_date("032489")
-    four = @shifts.last_four(square)
-    @shifts.create_offsets(four)
-    @shifts.create_shifts
+    @cipher.create_keys(12345)
+    square = @cipher.square_date("032489")
+    four = @cipher.last_four(square)
+    @cipher.create_offsets(four)
+    @cipher.create_shifts
     expected = {a: 17,
                 b: 24,
                 c: 36,
                 d: 46}
-    assert_equal expected, @shifts.shifts
+    assert_equal expected, @cipher.shifts
   end
 
   def test_shifts_integrated_method_creates_all_hashes
@@ -60,9 +60,9 @@ class ShiftsTest < MiniTest::Test
                 :b=>24,
                 :c=>36,
                 :d=>46}
-    @shifts.create_hashes(12345,"032489")
-    assert_equal expected_keys, @shifts.keys
-    assert_equal expected_offsets, @shifts.offsets
-    assert_equal expected_shifts, @shifts.shifts
+    @cipher.create_hashes(12345,"032489")
+    assert_equal expected_keys, @cipher.keys
+    assert_equal expected_offsets, @cipher.offsets
+    assert_equal expected_shifts, @cipher.shifts
   end
 end

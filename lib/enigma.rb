@@ -1,4 +1,4 @@
-require "./lib/shifts"
+require "./lib/cipher"
 require "./lib/encrypter"
 require "./lib/decrypter"
 require "./lib/cracker"
@@ -10,7 +10,7 @@ class Enigma
 
   attr_reader :key,
               :offset,
-              :shifts,
+              :cipher,
               :letter_align,
               :options_hash,
               :alphabet
@@ -18,7 +18,7 @@ class Enigma
   def initialize
     @key = nil
     @offset = nil
-    @shifts = Shifts.new
+    @cipher = Cipher.new
     @alphabet = ("a".."z").to_a << " "
     @letter_align = {a: nil, b: nil, c: nil, d: nil}
     @options_hash = {first:[], second:[], third:[], fourth:[]}
