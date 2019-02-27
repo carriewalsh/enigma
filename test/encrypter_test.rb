@@ -64,8 +64,8 @@ class EncrypterTest < MiniTest::Test
     @enigma.cipher.create_shifts
     @enigma.cipher.create_shifted_arrays(12345,"032489")
     expected = {encryption: "message",
-      key: "12345",
-      date: "032489"}
-      assert_equal expected, @enigma.encrypt_hash("message","12345","032489")
-    end
+    key: "12345",
+    date: "032489"}
+    assert_equal expected, @enigma.encrypt_hash("message","12345","032489")
+  end
 end
