@@ -14,11 +14,11 @@ class LetterShiftTest < MiniTest::Test
     assert_equal [3, 20, 2, 10, 18], @enigma.string_indices("ducks",@enigma.alphabet)
   end
 
-  def test_all_chars_are_rotated
+  def test_all_characters_are_rotated
     assert_equal "urlci", @enigma.shift_all_forward("ducks")
   end
 
-  def test_chars_rotated_back
+  def test_characters_rotated_back
     assert_equal "ducks", @enigma.shift_all_backward("urlci")
   end
 end

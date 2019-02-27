@@ -10,7 +10,7 @@ class KeyFinderTest < MiniTest::Test
     @enigma.cipher.create_shifted_arrays(12345,"032489")
   end
 
-  def test_shifts_can_be_calculated
+  def test_letter_shifts_can_be_calculated
     @enigma.find_letter_align("afdsrutlgu kq")
     @enigma.calculate_shifts
     expected = {a: 13,
@@ -43,7 +43,7 @@ class KeyFinderTest < MiniTest::Test
     assert_equal expected, @enigma.key_options_hash
   end
 
-  def test_can_compare_number_to_array_of_numbers
+  def test_can_compare_key_option_to_array_of_numbers_forward
     @enigma.find_letter_align("afdsrutlgu kq")
     @enigma.calculate_shifts
     @enigma.calculate_keys("230219")
@@ -54,7 +54,7 @@ class KeyFinderTest < MiniTest::Test
     assert_equal false, actual_2
   end
 
-  def test_can_compare_fourth_numbers_to_array
+  def test_can_compare_key_option_to_array_of_numbers_reverse
     @enigma.find_letter_align("afdsrutlgu kq")
     @enigma.calculate_shifts
     @enigma.calculate_keys("230219")
